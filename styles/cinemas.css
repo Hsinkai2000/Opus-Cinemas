@@ -1,4 +1,29 @@
+.wrapper {
+    width: 60% !important;
+}
+
 td {
     color: #ded7d7;
     text-align: left;
+    vertical-align: top; /* Set the default vertical alignment for cells */
+}
+
+table {
+    width: 100%; /* Ensure the table takes full width */
+    border-collapse: collapse; /* Remove spacing between cells */
+}
+
+th,
+td {
+    padding: 10px; /* Adjust padding as needed */
+}
+
+table h3 {
+    margin-top: 70px; /* Add margin to adjust vertical position */
+    margin-bottom: 5px; /* Optional: adjust bottom margin if needed */
+}
+
+p {
+    margin: 0; /* Remove default margin from paragraphs */
+    line-height: 1.4; /* Adjust line height for better spacing */
 }

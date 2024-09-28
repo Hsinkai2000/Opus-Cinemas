@@ -29,7 +29,7 @@ header {
     align-items: center;
 }
 
-header h3 {
+header .opus-name {
     width: 5%;
     white-space: nowrap;
     overflow: visible;
