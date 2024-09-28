@@ -2,7 +2,6 @@ body {
     background-color: #282430;
     font-size: 1.1rem;
     margin: 0;
-    margin-bottom: 140px;
 }
 
 /* Nav styles */
@@ -56,7 +55,7 @@ footer a:hover {
 }
 
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     background-color: #3d3c52;
     width: 100%;
