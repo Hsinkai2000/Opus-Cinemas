@@ -1,0 +1,9 @@
+.wrapper {
+    margin: auto;
+    width: 90%;
+}
+
+td {
+    color: #ded7d7;
+    text-align: left;
+}
