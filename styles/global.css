@@ -5,6 +5,15 @@ body {
     margin: 0;
 }
 
+.wrapper {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
 /* Nav styles */
 
 header {
