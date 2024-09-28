@@ -1,0 +1,71 @@
+.wrapper {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    height: calc(100vh - 160px - 140px);
+    align-items: center;
+    justify-content: center;
+}
+
+.left-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+}
+
+.left-panel img {
+    max-width: 100%;
+}
+
+.right-panel {
+    color: white;
+    width: 25%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.right-panel h2 {
+    font-size: 1.3em;
+}
+
+form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #282430;
+    border: 1px solid #7597c9;
+    border-radius: 10px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#loginButton {
+    background-color: #7597c9;
+    width: 45%;
+    height: 57px;
+    border-radius: 10px;
+    color: #282430;
+}
+
+#registerButton {
+    background-color: #282430;
+    width: 45%;
+    height: 57px;
+    border-radius: 10px;
+    color: #7597c9;
+    border: 1px solid #7597c9;
+}
