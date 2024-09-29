@@ -32,6 +32,7 @@ hr {
 }
 
 .card-list {
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -41,7 +42,7 @@ hr {
 .card {
     /* padding: 5px; */
     padding-bottom: 15px;
-    width: 16.6%;
+    width: 280px;
     display: flex;
     flex-direction: column;
     color: #ded7d7;
@@ -49,5 +50,5 @@ hr {
 }
 
 .card:hover {
-    width: 17%;
+    width: 290px;
 }
