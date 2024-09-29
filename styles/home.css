@@ -52,3 +52,7 @@ hr {
 .card:hover {
     width: 290px;
 }
+
+a:hover {
+    color: #7597c9;
+}
