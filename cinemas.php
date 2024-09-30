@@ -1,5 +1,7 @@
 <?php
-  include 'database_connection.php'
+  include 'database_connection.php';
+  session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +31,12 @@
                     <li class="navlink"><a href="#">Now Showing</a></li>
                 </ul>
             </div>
-            <a class="navlink login" href="login.html">Login</a>
+            <?php
+              if (!isset($_SESSION['user_id'])) { ?>
+                  <a class="navlink login" href="login.php">Login</a>
+              <?php } else { ?>
+                  <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+              <?php } ?>
         </header>
 
         <div class="wrapper">

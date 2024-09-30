@@ -19,12 +19,12 @@
             <h3>Opus Cinemas</h3>
             <div>
                 <ul class="nav">
-                    <li class="navlink"><a href="home.html">Home</a></li>
-                    <li class="navlink"><a href="cinemas.html">Cinemas</a></li>
+                    <li class="navlink"><a href="home.php">Home</a></li>
+                    <li class="navlink"><a href="cinemas.php">Cinemas</a></li>
                     <li class="navlink"><a href="#">Now Showing</a></li>
                 </ul>
             </div>
-            <a class="navlink login active" href="login.html">Login</a>
+            <a class="navlink login active" href="login.php">Login</a>
         </header>
 
         <div class="wrapper">
@@ -36,6 +36,11 @@
                     Unlock the door to cinematic extravagance. <br />Log in to
                     your exclusive movie haven.
                 </h2>
+                <?php if (isset($_GET['error'])): ?>
+                <div class="error-message" style="color: red;">
+                    <?php echo htmlspecialchars($_GET['error']); ?>
+                </div>
+                <?php endif; ?>
                 <form action="users.php" method="post">
                     <label for="email">Email</label>
                     <input type="email" name="email" placeholder="Enter Email" required />

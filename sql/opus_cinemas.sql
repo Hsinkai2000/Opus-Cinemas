@@ -111,6 +111,7 @@ INSERT INTO movies (cinema_id, genre, title, description, picture, director, wri
 VALUES (1, 'Sci-Fi', 'The Creator', 'A futuristic sci-fi thriller.', 'assets/covers/the_creator_cover.png', 'Gareth Edwards', 'Gareth Edwards', 'John David Washington', TRUE);
 
 
+
 INSERT INTO cinemas (name, description, picture)
 VALUES ('The Picture Palace', 'Step into a timeless realm of cinematic grandeur at The Picture Palace. This opulent establishment boasts plush velvet seats, ornate chandeliers, and a state-of-the-art sound system that envelops you in the film''s world. Indulge in gourmet popcorn and a curated selection of fine wines and spirits, served by attentive staff in a luxurious lounge. ', 'assets/picturepalace.png');
 
