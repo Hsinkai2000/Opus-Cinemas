@@ -50,7 +50,7 @@
                     while ($row = $result->fetch_assoc()) {
             ?>
                 <tr>
-                    <th rowspan="2">
+                    <th rowspan="3"> <!-- defualt value is 2, i changed to 3 for debuging to fit in the movies -->
                         <img src="<?php echo $row["picture"];?>" alt="" />
                     </th>
                     <td><h3><?php echo $row["name"]; ?></h3></td>
@@ -62,6 +62,30 @@
                         </p>
                     </td>
                 </tr>
+                
+                <!-- For this part, i put in the movies available at a cinema for debugging purposes-->
+                <tr>
+                  <td>
+                      <p>
+
+                          <?php 
+                              $sql_movies = "SELECT m.title FROM cinemas_movies cm JOIN movies m ON cm.movie_id = m.movie_id WHERE cm.cinema_id = " . $row["cinema_id"];
+                              $result_movies = $conn->query($sql_movies);
+
+                              if ($result_movies && $result_movies->num_rows > 0) {
+                                  echo "Movies Showing: <br>";
+                                  while ($row_movies = $result_movies->fetch_assoc()) {
+                                      echo $row_movies["title"] . "<br>"; // Add line break for better readability
+                                  }
+                              } else {
+                                  echo "No movies found."; // Message if no movies are found
+                              }
+                          ?>
+                      </p>
+                  </td>
+              </tr>
+
+                
 
             <?php 
                     }

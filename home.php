@@ -56,7 +56,7 @@
                 <hr />
                 <div class="section-heading">
                     <h3>Now Showing</h3>
-                    <a href="$">View All</a>
+                    <a href="#">View All</a>
                 </div>
 
                 <div class="card-list">

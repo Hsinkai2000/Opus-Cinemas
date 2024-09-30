@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = $result->fetch_assoc();
             
             // Store user information in session
-            $_SESSION['user_id'] = $user['id']; // Assuming your users table has an 'id' column
+            $_SESSION['user_id'] = $user['user_id']; // Assuming your users table has an 'id' column
             $_SESSION['email'] = $user['email']; // Store email for later use
             
             header("Location: home.php");
