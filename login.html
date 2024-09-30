@@ -36,27 +36,28 @@
                     Unlock the door to cinematic extravagance. <br />Log in to
                     your exclusive movie haven.
                 </h2>
-                <form action="post">
+                <form action="users.php" method="post">
                     <label for="email">Email</label>
-                    <input type="email" placeholder="Enter Email" required />
+                    <input type="email" name="email" placeholder="Enter Email" required />
                     <label for="password">Password</label>
                     <input
                         type="password"
                         placeholder="Enter Password"
+                        name="password"
                         required
                     />
 
                     <div class="actions">
                         <button
-                            type="button"
-                            onclick="registerOnClick()"
+                            type="submit"
+                            name="login"
                             id="loginButton"
                         >
                             Login
                         </button>
                         <button
-                            type="button"
-                            onclick="loginOnClick()"
+                            type="submit"
+                            name="register"
                             id="registerButton"
                         >
                             Register

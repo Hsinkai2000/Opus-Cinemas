@@ -1,17 +1,5 @@
 <?php
-    // MySQL server connection details
-    $servername = "localhost"; 
-    $username = "root";
-    $password = "";
-    $dbname = "opus_cinemas"; 
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+  include 'database_connection.php'
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
