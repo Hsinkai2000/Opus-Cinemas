@@ -1,4 +1,6 @@
-open terminal and cd to bin
+open terminal and run 
+
+cd /Applications/XAMPP/bin
 
 run
 
@@ -7,3 +9,5 @@ run
 then run 
 
 source /Applications/XAMPP/xamppfiles/htdocs/Opus-Cinemas/sql/opus_cinemas.sql
+
+
