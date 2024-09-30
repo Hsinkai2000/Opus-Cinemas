@@ -19,7 +19,7 @@
             <h3>Opus Cinemas</h3>
             <div>
                 <ul class="nav">
-                    <li class="navlink"><a href="home.html">Home</a></li>
+                    <li class="navlink"><a href="home.php">Home</a></li>
                     <li class="navlink"><a href="cinemas.html">Cinemas</a></li>
                     <li class="navlink"><a href="#">Now Showing</a></li>
                 </ul>
@@ -36,33 +36,19 @@
                     Unlock the door to cinematic extravagance. <br />Log in to
                     your exclusive movie haven.
                 </h2>
-                <form action="post">
-                    <label for="email">Email</label>
-                    <input type="email" placeholder="Enter Email" required />
-                    <label for="password">Password</label>
-                    <input
-                        type="password"
-                        placeholder="Enter Password"
-                        required
-                    />
-
-                    <div class="actions">
-                        <button
-                            type="button"
-                            onclick="registerOnClick()"
-                            id="loginButton"
-                        >
-                            Login
-                        </button>
-                        <button
-                            type="button"
-                            onclick="loginOnClick()"
-                            id="registerButton"
-                        >
-                            Register
-                        </button>
-                    </div>
-                </form>
+                <form action="login.php" method="post">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" placeholder="Enter Email" required />
+                  <label for="password">Password</label>
+                  <input type="password" name="password" placeholder="Enter Password" required />
+              
+                  <div class="actions">
+                      <button type="submit" id="loginButton">Login</button>
+                      <button type="button" onclick="registerOnClick()" id="registerButton">
+                          Register
+                      </button>
+                  </div>
+              </form>
             </div>
         </div>
 

@@ -26,7 +26,7 @@
             <div>
                 <ul class="nav">
                     <li class="navlink">
-                        <a class="active" href="home.html">Home</a>
+                        <a class="active" href="home.php">Home</a>
                     </li>
                     <li class="navlink"><a href="cinemas.html">Cinemas</a></li>
                     <li class="navlink"><a href="#">Now Showing</a></li>
@@ -147,6 +147,56 @@
                     </div>
                 </div>
             </div>
+
+            <div class="section">
+                <hr />
+                <div class="section-heading">
+                    <h3>UTeeeffst</h3>
+                </div>
+                <?php
+                  // MySQL server connection details
+                  $servername = "localhost"; // Your SQL server's hostname
+                  $username = "root"; // Your SQL server's username
+                  $password = ""; // Your SQL server's password
+                  $dbname = "opus_cinemas"; // Your database name
+
+                  // Create connection
+                  $conn = new mysqli($servername, $username, $password, $dbname);
+
+                  // Check connection
+                  if ($conn->connect_error) {
+                      die("Connection failed: " . $conn->connect_error);
+                  }
+
+                  // SQL query to select all movies from the movies table
+                  $sql = "SELECT title, genre, description, picture, director, writers, actors FROM movies";
+                  $result = $conn->query($sql);
+
+                  if ($result->num_rows > 0) {
+                      // Output data for each row
+                      echo "<div class='movies-list'>";
+                      while($row = $result->fetch_assoc()) {
+                          echo "<div class='movie'>";
+                          echo "<h3>" . $row["title"] . "</h3>"; // Echo movie title
+                          echo "<p><strong>Genre:</strong> " . $row["genre"] . "</p>";
+                          echo "<p><strong>Description:</strong> " . $row["description"] . "</p>";
+                          echo "<p><strong>Director:</strong> " . $row["director"] . "</p>";
+                          echo "<p><strong>Writers:</strong> " . $row["writers"] . "</p>";
+                          echo "<p><strong>Actors:</strong> " . $row["actors"] . "</p>";
+                          echo "<img src='" . $row["picture"] . "' alt='" . $row["title"] . "' style='width: 150px; height: 200px;'/>";
+                          echo "</div><hr>";
+                      }
+                      echo "</div>";
+                  } else {
+                      echo "No movies found.";
+                  }
+
+                  // Close connection
+                  $conn->close();
+                ?>
+                
+            </div>
+            
         </div>
 
         <footer>
