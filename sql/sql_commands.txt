@@ -1,0 +1,9 @@
+open terminal and cd to bin
+
+run
+
+./mysql -u root -p 
+
+then run 
+
+source /Applications/XAMPP/xamppfiles/htdocs/Opus-Cinemas/sql/opus_cinemas.sql
