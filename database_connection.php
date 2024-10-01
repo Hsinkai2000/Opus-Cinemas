@@ -2,7 +2,7 @@
 // MySQL server connection details
 $servername = "localhost";
 $username = "root";
-$password = "lampard8";
+$password = "";
 $dbname = "opus_cinemas";
 
 // Create connection
