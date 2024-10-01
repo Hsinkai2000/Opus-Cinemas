@@ -103,7 +103,7 @@ $genre_stmt->close();
             <hr />
             <div class="section-heading">
                 <h3>Similar Movies</h3>
-                <a href="#">View All</a>
+                <a href="now_showing.php">View All</a>
             </div>
 
             <div class="card-list">
@@ -144,7 +144,7 @@ $genre_stmt->close();
             No.: 194700158G
         </p>
     </footer>
-    <script src="" async defer></script>
+    <script src="scripts/movie_details.js" async defer></script>
 </body>
 
 </html>
