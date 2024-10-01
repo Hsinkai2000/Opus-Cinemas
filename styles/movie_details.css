@@ -106,4 +106,7 @@ a:hover {
 
 .button_group {
     margin-top: 50px;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
 }

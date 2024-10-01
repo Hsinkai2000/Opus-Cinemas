@@ -147,51 +147,48 @@ INSERT INTO genres (movie_id,genre) VALUES (15, "Adventure");
 INSERT INTO genres (movie_id,genre) VALUES (15, "Science Fiction");
 INSERT INTO genres (movie_id,genre) VALUES (15, "Fantasy");
 
-
 -- Now Showing Movies
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Avatar: The Last Airbender', 'A young boy embarks on an epic journey to restore balance to the world.', 'assets/covers/avatar_the_last_airbender_cover.png', 'Michael Dante DiMartino', 'Michael Dante DiMartino, Bryan Konietzko', 'Zach Tyler, Mae Whitman');
+VALUES ('Avatar: The Last Airbender', 'In a world divided by elemental nations, a young boy named Aang discovers he is the last of the Airbenders and the only one capable of restoring harmony. As he teams up with friends Katara and Sokka, they embark on an epic journey across the globe to master all four elements and defeat the Fire Nation, learning the true meaning of friendship, bravery, and destiny along the way.', 'assets/covers/avatar_the_last_airbender_cover.png', 'Michael Dante DiMartino', 'Michael Dante DiMartino, Bryan Konietzko', 'Zach Tyler, Mae Whitman');
 
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Aquaman', 'The King of Atlantis embarks on a quest to find the Trident of Atlan.', 'assets/covers/aquaman_cover.png', 'James Wan', 'David Leslie Johnson-McGoldrick', 'Jason Momoa, Amber Heard');
+VALUES ('Aquaman', 'Arthur Curry, the reluctant heir to the underwater kingdom of Atlantis, must embrace his destiny as Aquaman to reclaim his throne. With the help of powerful allies, he sets out on an epic quest to prevent a war between the surface world and the underwater realm, all while confronting his own inner demons and the legacy of his mother, Queen Atlanna.', 'assets/covers/aquaman_cover.png', 'James Wan', 'David Leslie Johnson-McGoldrick', 'Jason Momoa, Amber Heard');
 
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Deadpool x Wolverine', 'Deadpool and Wolverine team up for a new adventure.', 'assets/covers/deadpool_x_wolverine_cover.png', 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'Ryan Reynolds, Hugh Jackman');
+VALUES ('Deadpool x Wolverine', 'When a formidable new villain threatens both the worlds of mutants and humans, two of the most unconventional heroes, Deadpool and Wolverine, must reluctantly join forces. Their journey is filled with action, humor, and chaos as they navigate their clashing personalities while facing off against mercenaries and villains that put their skills to the ultimate test.', 'assets/covers/deadpool_x_wolverine_cover.png', 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'Ryan Reynolds, Hugh Jackman');
 
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Quantumania', 'Ant-Man and the Wasp battle a new threat from the quantum realm.', 'assets/covers/quantumania_cover.png', 'Peyton Reed', 'Jeff Loveness', 'Paul Rudd, Evangeline Lilly');
+VALUES ('Quantumania', 'In this thrilling sequel, Ant-Man and the Wasp dive into the mysterious quantum realm to face a new and powerful foe. As they explore this bizarre universe, they uncover secrets that could change the course of reality, leading to intense battles, unexpected alliances, and a deeper understanding of what it means to be a hero in a world filled with uncertainties.', 'assets/covers/quantumania_cover.png', 'Peyton Reed', 'Jeff Loveness', 'Paul Rudd, Evangeline Lilly');
 
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Garfield: The Movie', 'The lazy cat Garfield embarks on a fun adventure.', 'assets/covers/garfield_cover.png', 'Peter Hewitt', 'Joel Cohen, Alec Sokolow', 'Bill Murray, Breckin Meyer');
+VALUES ('Garfield: The Movie', 'Follow the adventures of Garfield, the lasagna-loving cat, as he navigates the ups and downs of life with his owner Jon and his canine companion Odie. When Garfield finds himself in a series of hilarious misadventures, he must discover the importance of friendship, loyalty, and the value of stepping outside his comfort zone.', 'assets/covers/garfield_cover.png', 'Peter Hewitt', 'Joel Cohen, Alec Sokolow', 'Bill Murray, Breckin Meyer');
 
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Fistful Scavengers', 'A young boy embarks on an epic journey to restore balance to the world.', 'assets/covers/fistful_scavengers_cover.png', 'Michael Dante DiMartino', 'Michael Dante DiMartino, Bryan Konietzko', 'Zach Tyler, Mae Whitman');
+VALUES ('Fistful Scavengers', 'Set against the backdrop of a post-apocalyptic world, a group of unlikely heroes must band together to reclaim their home from ruthless scavengers. Their journey is filled with perilous challenges, unexpected alliances, and moments of courage as they learn that sometimes the greatest treasures lie within the bonds they form and the sacrifices they make for one another.', 'assets/covers/fistful_scavengers_cover.png', 'Michael Dante DiMartino', 'Michael Dante DiMartino, Bryan Konietzko', 'Zach Tyler, Mae Whitman');
 
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Little Mermaid', 'The King of Atlantis embarks on a quest to find the Trident of Atlan.', 'assets/covers/little_mermaid_cover.png', 'James Wan', 'David Leslie Johnson-McGoldrick', 'Jason Momoa, Amber Heard');
+VALUES ('Little Mermaid', 'Dive into an enchanting underwater world with Ariel, a spirited mermaid who dreams of life on the surface. When she makes a fateful deal with the sea witch Ursula, Ariel embarks on a magical adventure filled with friendship, love, and self-discovery as she learns the true meaning of sacrifice and what it truly means to be free.', 'assets/covers/little_mermaid_cover.png', 'James Wan', 'David Leslie Johnson-McGoldrick', 'Jason Momoa, Amber Heard');
 
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Dynasty', 'Deadpool and Wolverine team up for a new adventure.', 'assets/covers/dynasty_cover.png', 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'Ryan Reynolds, Hugh Jackman');
+VALUES ('Dynasty', 'In a high-stakes world of power and ambition, two legendary heroes—Deadpool and Wolverine—face a new enemy that threatens not just their existence but the fate of the entire universe. Amidst epic battles and personal conflicts, they must rely on their unique skills and unbreakable bond to navigate through a conspiracy that shakes the very foundations of their reality.', 'assets/covers/dynasty_cover.png', 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'Ryan Reynolds, Hugh Jackman');
 
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Avatar: The Lost Ark', 'Ant-Man and the Wasp battle a new threat from the quantum realm.', 'assets/covers/avatar_the_lost_ark_cover.png', 'Peyton Reed', 'Jeff Loveness', 'Paul Rudd, Evangeline Lilly');
+VALUES ('Avatar: The Lost Ark', 'As Aang continues his quest to master the elements, he uncovers an ancient secret that could either save or destroy the world. Joined by his loyal friends, they traverse perilous terrains, encounter mythical creatures, and confront powerful adversaries in a race against time that tests their strength, resolve, and the very essence of what it means to be a hero.', 'assets/covers/avatar_the_lost_ark_cover.png', 'Peyton Reed', 'Jeff Loveness', 'Paul Rudd, Evangeline Lilly');
 
 INSERT INTO movies ( title, description, picture, director, writers, actors) 
-VALUES ('Up!', 'The lazy cat Garfield embarks on a fun adventure.', 'assets/covers/up_cover.png', 'Peter Hewitt', 'Joel Cohen, Alec Sokolow', 'Bill Murray, Breckin Meyer');
-
-
+VALUES ('Up!', 'Join Carl Fredricksen, a retired balloon salesman, on an adventure of a lifetime as he fulfills a promise to his late wife by attaching thousands of balloons to his house and flying to South America. Along the way, he unexpectedly befriends a young boy scout, Russell, and together they encounter wild landscapes, exotic creatures, and life-changing experiences that teach them about friendship, loss, and embracing the journey.', 'assets/covers/up_cover.png', 'Peter Hewitt', 'Joel Cohen, Alec Sokolow', 'Bill Murray, Breckin Meyer');
 
 -- Upcoming Movies
-INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) VALUES ('Fighter', 'A high-octane fighter pilot action movie.', 'assets/covers/fighter_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
+INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) VALUES ('Fighter', 'In a world where aerial combat is the ultimate test of skill, a talented fighter pilot must overcome personal challenges and fierce competition to prove himself. As he navigates through high-stakes missions and complex relationships, he discovers the true meaning of bravery, loyalty, and the sacrifices that come with following your dreams.', 'assets/covers/fighter_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
 
-INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming)  VALUES ('Symphony', 'A gripping musical drama.', 'assets/covers/symphony_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
+INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming)  VALUES ('Symphony', 'A gripping musical drama that follows the journey of a talented composer struggling to find his voice amid personal and professional turmoil. As he confronts his fears and insecurities, he learns to harness his creativity and passion, ultimately leading to a powerful performance that showcases the beauty of resilience and self-discovery.', 'assets/covers/symphony_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
 
-INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) VALUES ('Inside Out 2', 'The sequel to the animated film about the emotions inside a young girl.', 'assets/covers/inside_out_2_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
+INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) VALUES ('Inside Out 2', 'In this heartfelt sequel, the emotions inside young Riley face new challenges as she navigates her teenage years. With humor and depth, the film explores the complexities of growing up, friendship, and the importance of embracing all emotions—both the joyful and the painful—as Riley learns to find her true self.', 'assets/covers/inside_out_2_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
 
-INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) VALUES ('Wonka', 'The origin story of the famous chocolatier Willy Wonka.', 'assets/covers/wonka_cover.png', 'Paul King', 'Simon Farnaby', 'Timothée Chalamet', TRUE);
+INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) VALUES ('Wonka', 'Delve into the whimsical world of Willy Wonka as his extraordinary journey unfolds, showcasing his early adventures and the magical inventions that made him a legend. Through trials and tribulations, Willy learns about friendship, creativity, and the importance of believing in oneself, ultimately paving the way for his iconic chocolate factory.', 'assets/covers/wonka_cover.png', 'Paul King', 'Simon Farnaby', 'Timothée Chalamet', TRUE);
 
 INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) 
-VALUES ('The Creator', 'A futuristic sci-fi thriller.', 'assets/covers/the_creator_cover.png', 'Gareth Edwards', 'Gareth Edwards', 'John David Washington', TRUE);
+VALUES ('The Creator', 'Set in a dystopian future where artificial intelligence reigns, a skilled engineer must confront his greatest fears as he embarks on a quest to create a new form of consciousness. Blurring the lines between man and machine, he navigates moral dilemmas and unexpected alliances, ultimately challenging the very fabric of what it means to be human.', 'assets/covers/the_creator_cover.png', 'Gareth Edwards', 'Gareth Edwards', 'John David Washington', TRUE);
 
 
 

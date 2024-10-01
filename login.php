@@ -49,10 +49,10 @@
                 <input type="password" placeholder="Enter Password" name="password" required />
 
                 <div class="actions">
-                    <button type="submit" name="login" id="loginButton">
+                    <button type="submit" name="login" id="loginButton" class="blue_button">
                         Login
                     </button>
-                    <button type="submit" name="register" id="registerButton">
+                    <button type="submit" name="register" id="registerButton" class="transparent_button">
                         Register
                     </button>
                 </div>

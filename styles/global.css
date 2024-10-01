@@ -90,21 +90,38 @@ footer p {
     justify-content: space-between;
 }
 
+.blue_button,
 .transparent_button {
-    margin: 5px 5px 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 50px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.transparent_button {
+    margin: 5px 0 5px 0;
     width: 200px;
     background-color: #282430;
     color: #7597c9;
-    padding: 15px 50px;
     border: 1px solid #7597c9;
-    border-radius: 10px;
 }
 
 .blue_button {
-    margin: 5px 5px 5px 0;
+    margin: 5px 0 5px 0;
     width: 200px;
     background-color: #7597c9;
     color: #282430;
-    padding: 15px 50px;
-    border-radius: 10px;
+    border: 1px solid #7597c9;
+}
+
+.transparent_button:hover {
+    background-color: #7597c9;
+    color: #282430;
+}
+
+.blue_button:hover {
+    background-color: #6381af;
 }
