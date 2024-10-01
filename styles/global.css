@@ -3,6 +3,7 @@ body {
     background-color: #282430;
     font-size: 1.1rem;
     margin: 0;
+    color: #ded7d7;
 }
 
 .wrapper {
@@ -87,4 +88,23 @@ footer p {
     padding: 0px 30px 0px 30px;
     display: flex;
     justify-content: space-between;
+}
+
+.transparent_button {
+    margin: 5px 5px 5px 0;
+    width: 200px;
+    background-color: #282430;
+    color: #7597c9;
+    padding: 15px 50px;
+    border: 1px solid #7597c9;
+    border-radius: 10px;
+}
+
+.blue_button {
+    margin: 5px 5px 5px 0;
+    width: 200px;
+    background-color: #7597c9;
+    color: #282430;
+    padding: 15px 50px;
+    border-radius: 10px;
 }

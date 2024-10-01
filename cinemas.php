@@ -74,7 +74,7 @@ session_start();
                             <p>
 
                                 <?php
-                                $sql_movies = "SELECT m.title FROM cinemas_movies cm JOIN movies m ON cm.movie_id = m.movie_id WHERE cm.cinema_id = " . $row["cinema_id"];
+                                $sql_movies = "SELECT m.title FROM cinemas_movies cm JOIN movies m ON cm.movie_id = m.id WHERE cm.cinema_id = " . $row["id"];
                                 $result_movies = $conn->query($sql_movies);
 
                                 if ($result_movies && $result_movies->num_rows > 0) {

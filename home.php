@@ -40,9 +40,9 @@ session_start();
         </div>
         <?php
         if (!isset($_SESSION['user_id'])) { ?>
-            <a class="navlink login" href="login.php">Login</a>
+        <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-            <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+        <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 
@@ -60,16 +60,16 @@ session_start();
             <div class="card-list">
 
                 <?php
-                $sql = "SELECT title, genre, description, picture, director, writers, actors FROM movies WHERE isUpcoming = false ";
+                $sql = "SELECT id,title, description, picture, director, writers, actors FROM movies WHERE isUpcoming = false ";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                        <div class="card">
-                            <img src="<?php echo $row["picture"]; ?>" alt="" />
-                            <span><?php echo $row["title"]; ?></span>
-                        </div>
+                <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
+                    <img src="<?php echo $row["picture"]; ?>" alt="" />
+                    <span><?php echo $row["title"]; ?></span>
+                </div>
 
                 <?php
                     }
@@ -89,16 +89,16 @@ session_start();
 
             <div class="card-list">
                 <?php
-                $sql = "SELECT title, genre, description, picture, director, writers, actors FROM movies WHERE isUpcoming = true ";
+                $sql = "SELECT title, description, picture, director, writers, actors FROM movies WHERE isUpcoming = true ";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                        <div class="card">
-                            <img src="<?php echo $row["picture"]; ?>" alt="" />
-                            <span><?php echo $row["title"]; ?></span>
-                        </div>
+                <div class="card">
+                    <img src="<?php echo $row["picture"]; ?>" alt="" />
+                    <span><?php echo $row["title"]; ?></span>
+                </div>
 
                 <?php
                     }
@@ -127,7 +127,7 @@ session_start();
             No.: 194700158G
         </p>
     </footer>
-    <script src="" async defer></script>
+    <script src="scripts/home.js" async defer></script>
 </body>
 
 </html>

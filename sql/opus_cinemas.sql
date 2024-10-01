@@ -1,17 +1,20 @@
+
+DROP DATABASE opus_cinemas;
+
 CREATE DATABASE opus_cinemas;
 
 USE opus_cinemas;
 
 -- Users table
 CREATE TABLE users (
-  user_id INT AUTO_INCREMENT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   email VARCHAR(255),
   password VARCHAR(255)
 );
 
 -- Cinemas table
 CREATE TABLE cinemas (
-  cinema_id INT AUTO_INCREMENT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   picture VARCHAR(255),
   name VARCHAR(255),
   description TEXT
@@ -19,8 +22,7 @@ CREATE TABLE cinemas (
 
 -- Movies table
 CREATE TABLE movies (
-  movie_id INT AUTO_INCREMENT PRIMARY KEY,
-  genre VARCHAR(255),
+  id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255),
   description TEXT,
   picture VARCHAR(255),
@@ -35,32 +37,32 @@ CREATE TABLE cinemas_movies (
   cinema_id INT,
   movie_id INT,
   PRIMARY KEY (cinema_id, movie_id),  -- Composite Primary Key
-  FOREIGN KEY (cinema_id) REFERENCES cinemas(cinema_id),
-  FOREIGN KEY (movie_id) REFERENCES movies(movie_id)
+  FOREIGN KEY (cinema_id) REFERENCES cinemas(id),
+  FOREIGN KEY (movie_id) REFERENCES movies(id)
 );
 
 -- Movie timings table
 CREATE TABLE movie_timings (
-  movie_timing_id INT AUTO_INCREMENT PRIMARY KEY,  -- Unique primary key
+  id INT AUTO_INCREMENT PRIMARY KEY,  -- Unique primary key
   cinema_id INT,
   movie_id INT,
   timing VARCHAR(255),
-  FOREIGN KEY (cinema_id) REFERENCES cinemas(cinema_id),
-  FOREIGN KEY (movie_id) REFERENCES movies(movie_id),
+  FOREIGN KEY (cinema_id) REFERENCES cinemas(id),
+  FOREIGN KEY (movie_id) REFERENCES movies(id),
   UNIQUE (cinema_id, movie_id, timing)  -- Ensure unique timing for a cinema and movie
 );
 
 -- Bookings table
 CREATE TABLE bookings (
-  booking_id INT AUTO_INCREMENT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
   movie_timing_id INT,
   seats VARCHAR(255),
   price VARCHAR(255),
   name VARCHAR(255),
   email VARCHAR(255),
-  FOREIGN KEY (user_id) REFERENCES users(user_id),
-  FOREIGN KEY (movie_timing_id) REFERENCES movie_timings(movie_timing_id)
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (movie_timing_id) REFERENCES movie_timings(id)
 );
 
 -- Customer support table
@@ -69,6 +71,12 @@ CREATE TABLE customer_support (
   name VARCHAR(255),
   email VARCHAR(255),
   question VARCHAR(255)
+);
+
+CREATE TABLE genres (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    movie_id INT,
+    genre VARCHAR(255)
 );
 
 
@@ -80,55 +88,110 @@ INSERT INTO users (email, password) VALUES
 ('charlie.davis@example.com', 'ie4727'),
 ('irfansyakir@gmail.com', 'plswork');
 
+INSERT INTO genres (movie_id,genre) VALUES (1, "Animation");
+INSERT INTO genres (movie_id,genre) VALUES (1, "Action");
+
+INSERT INTO genres (movie_id,genre) VALUES (2, "Action");
+INSERT INTO genres (movie_id,genre) VALUES (2, "Adventure");
+INSERT INTO genres (movie_id,genre) VALUES (2, "Fantasy");
+
+INSERT INTO genres (movie_id,genre) VALUES (3, "Comedy");
+INSERT INTO genres (movie_id,genre) VALUES (3, "Science Fiction");
+INSERT INTO genres (movie_id,genre) VALUES (3, "Adventure");
+
+INSERT INTO genres (movie_id,genre) VALUES (4, "Action");
+INSERT INTO genres (movie_id,genre) VALUES (4, "Romance");
+INSERT INTO genres (movie_id,genre) VALUES (4, "Thriller");
+
+INSERT INTO genres (movie_id,genre) VALUES (5, "Comedy");
+INSERT INTO genres (movie_id,genre) VALUES (5, "Animation");
+INSERT INTO genres (movie_id,genre) VALUES (5, "Children");
+INSERT INTO genres (movie_id,genre) VALUES (5, "Fantasy");
+
+INSERT INTO genres (movie_id,genre) VALUES (6, "Action");
+INSERT INTO genres (movie_id,genre) VALUES (6, "Adult");
+INSERT INTO genres (movie_id,genre) VALUES (6, "Gore");
+
+INSERT INTO genres (movie_id,genre) VALUES (7, "Animation");
+INSERT INTO genres (movie_id,genre) VALUES (7, "Musical");
+INSERT INTO genres (movie_id,genre) VALUES (7, "Children");
+INSERT INTO genres (movie_id,genre) VALUES (7, "Romance");
+
+INSERT INTO genres (movie_id,genre) VALUES (8, "Action");
+
+INSERT INTO genres (movie_id,genre) VALUES (9, "Action");
+INSERT INTO genres (movie_id,genre) VALUES (9, "Fantasy");
+INSERT INTO genres (movie_id,genre) VALUES (9, "Science Fiction");
+
+INSERT INTO genres (movie_id,genre) VALUES (10, "Animation");
+INSERT INTO genres (movie_id,genre) VALUES (10, "Fantasy");
+INSERT INTO genres (movie_id,genre) VALUES (10, "Children");
+
+INSERT INTO genres (movie_id,genre) VALUES (11, "Action");
+INSERT INTO genres (movie_id,genre) VALUES (11, "Adult");
+INSERT INTO genres (movie_id,genre) VALUES (11, "Gore");
+
+INSERT INTO genres (movie_id,genre) VALUES (12, "Musical");
+INSERT INTO genres (movie_id,genre) VALUES (12, "Fantasy");
+INSERT INTO genres (movie_id,genre) VALUES (12, "Children");
+
+INSERT INTO genres (movie_id,genre) VALUES (13, "Animation");
+INSERT INTO genres (movie_id,genre) VALUES (13, "Science Fiction");
+INSERT INTO genres (movie_id,genre) VALUES (13, "Children");
+
+INSERT INTO genres (movie_id,genre) VALUES (14, "Science Fiction");
+INSERT INTO genres (movie_id,genre) VALUES (14, "Adventure");
+INSERT INTO genres (movie_id,genre) VALUES (14, "Children");
+
+INSERT INTO genres (movie_id,genre) VALUES (15, "Adventure");
+INSERT INTO genres (movie_id,genre) VALUES (15, "Science Fiction");
+INSERT INTO genres (movie_id,genre) VALUES (15, "Fantasy");
+
 
 -- Now Showing Movies
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Animation', 'Avatar: The Last Airbender', 'A young boy embarks on an epic journey to restore balance to the world.', 'assets/covers/avatar_the_last_airbender_cover.png', 'Michael Dante DiMartino', 'Michael Dante DiMartino, Bryan Konietzko', 'Zach Tyler, Mae Whitman');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Avatar: The Last Airbender', 'A young boy embarks on an epic journey to restore balance to the world.', 'assets/covers/avatar_the_last_airbender_cover.png', 'Michael Dante DiMartino', 'Michael Dante DiMartino, Bryan Konietzko', 'Zach Tyler, Mae Whitman');
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Action', 'Aquaman', 'The King of Atlantis embarks on a quest to find the Trident of Atlan.', 'assets/covers/aquaman_cover.png', 'James Wan', 'David Leslie Johnson-McGoldrick', 'Jason Momoa, Amber Heard');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Aquaman', 'The King of Atlantis embarks on a quest to find the Trident of Atlan.', 'assets/covers/aquaman_cover.png', 'James Wan', 'David Leslie Johnson-McGoldrick', 'Jason Momoa, Amber Heard');
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Action', 'Deadpool x Wolverine', 'Deadpool and Wolverine team up for a new adventure.', 'assets/covers/deadpool_x_wolverine_cover.png', 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'Ryan Reynolds, Hugh Jackman');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Deadpool x Wolverine', 'Deadpool and Wolverine team up for a new adventure.', 'assets/covers/deadpool_x_wolverine_cover.png', 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'Ryan Reynolds, Hugh Jackman');
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Sci-Fi', 'Quantumania', 'Ant-Man and the Wasp battle a new threat from the quantum realm.', 'assets/covers/quantumania_cover.png', 'Peyton Reed', 'Jeff Loveness', 'Paul Rudd, Evangeline Lilly');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Quantumania', 'Ant-Man and the Wasp battle a new threat from the quantum realm.', 'assets/covers/quantumania_cover.png', 'Peyton Reed', 'Jeff Loveness', 'Paul Rudd, Evangeline Lilly');
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Comedy', 'Garfield: The Movie', 'The lazy cat Garfield embarks on a fun adventure.', 'assets/covers/garfield_cover.png', 'Peter Hewitt', 'Joel Cohen, Alec Sokolow', 'Bill Murray, Breckin Meyer');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Garfield: The Movie', 'The lazy cat Garfield embarks on a fun adventure.', 'assets/covers/garfield_cover.png', 'Peter Hewitt', 'Joel Cohen, Alec Sokolow', 'Bill Murray, Breckin Meyer');
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Action', 'Fistful Scavengers', 'A young boy embarks on an epic journey to restore balance to the world.', 'assets/covers/fistful_scavengers_cover.png', 'Michael Dante DiMartino', 'Michael Dante DiMartino, Bryan Konietzko', 'Zach Tyler, Mae Whitman');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Fistful Scavengers', 'A young boy embarks on an epic journey to restore balance to the world.', 'assets/covers/fistful_scavengers_cover.png', 'Michael Dante DiMartino', 'Michael Dante DiMartino, Bryan Konietzko', 'Zach Tyler, Mae Whitman');
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Drama', 'Little Mermaid', 'The King of Atlantis embarks on a quest to find the Trident of Atlan.', 'assets/covers/little_mermaid_cover.png', 'James Wan', 'David Leslie Johnson-McGoldrick', 'Jason Momoa, Amber Heard');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Little Mermaid', 'The King of Atlantis embarks on a quest to find the Trident of Atlan.', 'assets/covers/little_mermaid_cover.png', 'James Wan', 'David Leslie Johnson-McGoldrick', 'Jason Momoa, Amber Heard');
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Action', 'Dynasty', 'Deadpool and Wolverine team up for a new adventure.', 'assets/covers/dynasty_cover.png', 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'Ryan Reynolds, Hugh Jackman');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Dynasty', 'Deadpool and Wolverine team up for a new adventure.', 'assets/covers/dynasty_cover.png', 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'Ryan Reynolds, Hugh Jackman');
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Action', 'Avatar: The Lost Ark', 'Ant-Man and the Wasp battle a new threat from the quantum realm.', 'assets/covers/avatar_the_lost_ark_cover.png', 'Peyton Reed', 'Jeff Loveness', 'Paul Rudd, Evangeline Lilly');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Avatar: The Lost Ark', 'Ant-Man and the Wasp battle a new threat from the quantum realm.', 'assets/covers/avatar_the_lost_ark_cover.png', 'Peyton Reed', 'Jeff Loveness', 'Paul Rudd, Evangeline Lilly');
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors) 
-VALUES ('Animation', 'Up!', 'The lazy cat Garfield embarks on a fun adventure.', 'assets/covers/up_cover.png', 'Peter Hewitt', 'Joel Cohen, Alec Sokolow', 'Bill Murray, Breckin Meyer');
+INSERT INTO movies ( title, description, picture, director, writers, actors) 
+VALUES ('Up!', 'The lazy cat Garfield embarks on a fun adventure.', 'assets/covers/up_cover.png', 'Peter Hewitt', 'Joel Cohen, Alec Sokolow', 'Bill Murray, Breckin Meyer');
 
 
 
 -- Upcoming Movies
-INSERT INTO movies (genre, title, description, picture, director, writers, actors, isUpcoming) 
-VALUES ('Action', 'Fighter', 'A high-octane fighter pilot action movie.', 'assets/covers/fighter_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
+INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) VALUES ('Fighter', 'A high-octane fighter pilot action movie.', 'assets/covers/fighter_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors, isUpcoming) 
-VALUES ('Drama', 'Symphony', 'A gripping musical drama.', 'assets/covers/symphony_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
+INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming)  VALUES ('Symphony', 'A gripping musical drama.', 'assets/covers/symphony_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors, isUpcoming) 
-VALUES ('Animation', 'Inside Out 2', 'The sequel to the animated film about the emotions inside a young girl.', 'assets/covers/inside_out_2_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
+INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) VALUES ('Inside Out 2', 'The sequel to the animated film about the emotions inside a young girl.', 'assets/covers/inside_out_2_cover.png', 'Unknown', 'Unknown', 'Unknown', TRUE);
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors, isUpcoming) 
-VALUES ('Adventure', 'Wonka', 'The origin story of the famous chocolatier Willy Wonka.', 'assets/covers/wonka_cover.png', 'Paul King', 'Simon Farnaby', 'Timothée Chalamet', TRUE);
+INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) VALUES ('Wonka', 'The origin story of the famous chocolatier Willy Wonka.', 'assets/covers/wonka_cover.png', 'Paul King', 'Simon Farnaby', 'Timothée Chalamet', TRUE);
 
-INSERT INTO movies (genre, title, description, picture, director, writers, actors, isUpcoming) 
-VALUES ('Sci-Fi', 'The Creator', 'A futuristic sci-fi thriller.', 'assets/covers/the_creator_cover.png', 'Gareth Edwards', 'Gareth Edwards', 'John David Washington', TRUE);
+INSERT INTO movies ( title, description, picture, director, writers, actors, isUpcoming) 
+VALUES ('The Creator', 'A futuristic sci-fi thriller.', 'assets/covers/the_creator_cover.png', 'Gareth Edwards', 'Gareth Edwards', 'John David Washington', TRUE);
 
 
 
