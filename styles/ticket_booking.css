@@ -1,0 +1,47 @@
+.wrapper {
+    flex-direction: row;
+    gap: 50px;
+}
+
+.movie-image {
+    width: 30%;
+}
+
+.booking-details {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.splide {
+    width: 100%;
+}
+
+.splide__track {
+    width: 80%;
+    margin: auto;
+}
+
+.splide__slide input[type="radio"] {
+    display: none; /* Hide the default radio buttons */
+}
+
+/* Default background color for unselected labels */
+.genre_bubble {
+    background-color: #3d3c52; /* Default color */
+    border-radius: 30px;
+    text-align: center;
+    padding: 10px 40px;
+    height: 50px;
+    display: inline-block;
+    cursor: pointer;
+    color: white; /* Text color */
+    margin: 10px; /* Spacing between bubbles */
+    transition: background-color 0.3s; /* Smooth background change */
+}
+
+/* Optional: Change color on hover */
+.genre_bubble:hover {
+    background-color: #7773be; /* Darker shade on hover */
+}

@@ -46,7 +46,7 @@ CREATE TABLE movie_timings (
   id INT AUTO_INCREMENT PRIMARY KEY,  -- Unique primary key
   cinema_id INT,
   movie_id INT,
-  timing VARCHAR(255),
+  timing DATETIME,
   FOREIGN KEY (cinema_id) REFERENCES cinemas(id),
   FOREIGN KEY (movie_id) REFERENCES movies(id),
   UNIQUE (cinema_id, movie_id, timing)  -- Ensure unique timing for a cinema and movie
@@ -216,3 +216,70 @@ INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (2, 3);
 INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (2, 4);
 INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (3, 1);  
 INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (3, 6);
+
+-- Get the current date
+SET @today = CURDATE();
+
+-- Create movie timings for each movie/cinema pair
+INSERT INTO movie_timings (cinema_id, movie_id, timing) VALUES 
+-- Cinema 1
+(1, 1, DATE_ADD(@today, INTERVAL 1 HOUR)),
+(1, 1, DATE_ADD(@today, INTERVAL 3 HOUR)),
+(1, 1, DATE_ADD(@today, INTERVAL 5 HOUR)),
+(1, 2, DATE_ADD(@today, INTERVAL 2 HOUR)),
+(1, 2, DATE_ADD(@today, INTERVAL 4 HOUR)),
+(1, 2, DATE_ADD(@today, INTERVAL 6 HOUR)),
+(1, 3, DATE_ADD(@today, INTERVAL 1 HOUR)),
+(1, 3, DATE_ADD(@today, INTERVAL 3 HOUR)),
+(1, 3, DATE_ADD(@today, INTERVAL 5 HOUR)),
+
+-- Cinema 2
+(2, 1, DATE_ADD(@today, INTERVAL 2 HOUR)),
+(2, 1, DATE_ADD(@today, INTERVAL 4 HOUR)),
+(2, 1, DATE_ADD(@today, INTERVAL 6 HOUR)),
+(2, 3, DATE_ADD(@today, INTERVAL 1 HOUR)),
+(2, 3, DATE_ADD(@today, INTERVAL 3 HOUR)),
+(2, 3, DATE_ADD(@today, INTERVAL 5 HOUR)),
+(2, 4, DATE_ADD(@today, INTERVAL 2 HOUR)),
+(2, 4, DATE_ADD(@today, INTERVAL 4 HOUR)),
+(2, 4, DATE_ADD(@today, INTERVAL 6 HOUR)),
+
+-- Cinema 3
+(3, 1, DATE_ADD(@today, INTERVAL 1 HOUR)),
+(3, 1, DATE_ADD(@today, INTERVAL 3 HOUR)),
+(3, 1, DATE_ADD(@today, INTERVAL 5 HOUR)),
+(3, 6, DATE_ADD(@today, INTERVAL 2 HOUR)),
+(3, 6, DATE_ADD(@today, INTERVAL 4 HOUR)),
+(3, 6, DATE_ADD(@today, INTERVAL 6 HOUR));
+
+
+INSERT INTO movie_timings (cinema_id, movie_id, timing) VALUES 
+-- Cinema 1
+(1, 1, DATE_ADD(@today, INTERVAL 12 HOUR)), 
+(1, 1, DATE_ADD(@today, INTERVAL 15 HOUR)), 
+(1, 1, DATE_ADD(@today, INTERVAL 18 HOUR)), 
+(1, 2, DATE_ADD(@today, INTERVAL 13 HOUR)), 
+(1, 2, DATE_ADD(@today, INTERVAL 16 HOUR)), 
+(1, 2, DATE_ADD(@today, INTERVAL 19 HOUR)), 
+(1, 3, DATE_ADD(@today, INTERVAL 14 HOUR)), 
+(1, 3, DATE_ADD(@today, INTERVAL 17 HOUR)), 
+(1, 3, DATE_ADD(@today, INTERVAL 20 HOUR)), 
+
+-- Cinema 2
+(2, 1, DATE_ADD(@today, INTERVAL 12 HOUR)), 
+(2, 1, DATE_ADD(@today, INTERVAL 15 HOUR)), 
+(2, 1, DATE_ADD(@today, INTERVAL 18 HOUR)), 
+(2, 3, DATE_ADD(@today, INTERVAL 14 HOUR)), 
+(2, 3, DATE_ADD(@today, INTERVAL 17 HOUR)), 
+(2, 3, DATE_ADD(@today, INTERVAL 20 HOUR)), 
+(2, 4, DATE_ADD(@today, INTERVAL 13 HOUR)), 
+(2, 4, DATE_ADD(@today, INTERVAL 16 HOUR)), 
+(2, 4, DATE_ADD(@today, INTERVAL 19 HOUR)), 
+
+-- Cinema 3
+(3, 1, DATE_ADD(@today, INTERVAL 12 HOUR)), 
+(3, 1, DATE_ADD(@today, INTERVAL 15 HOUR)), 
+(3, 1, DATE_ADD(@today, INTERVAL 18 HOUR)), 
+(3, 6, DATE_ADD(@today, INTERVAL 13 HOUR)), 
+(3, 6, DATE_ADD(@today, INTERVAL 16 HOUR)), 
+(3, 6, DATE_ADD(@today, INTERVAL 19 HOUR)); 

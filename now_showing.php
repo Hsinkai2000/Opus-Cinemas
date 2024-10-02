@@ -71,9 +71,24 @@ session_start();
 
 
             </div>
+
         </div>
     </div>
 
+
+    <footer>
+        <div class="footerlink">
+            <a href="#">About</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Career Opportunities</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <p>
+            © Copyright 2024 Opus Cinemas. All rights reserved. Co. Reg.
+            No.: 194700158G
+        </p>
+    </footer>
     <script src="scripts/now_showing.js" async defer></script>
 </body>
 

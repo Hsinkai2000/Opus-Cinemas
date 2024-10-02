@@ -75,7 +75,7 @@ $genre_stmt->close();
                 <p><?php echo $movie['description'] ?></p>
                 <div class="button_group">
                     <button class="transparent_button">Watch Trailer</button>
-                    <button class="blue_button">Book Now</button>
+                    <button class="blue_button" onclick="bookNowClicked(<?php echo $movie_id ?>)">Book Now</button>
                 </div>
             </div>
             <div class="movie-cast">
