@@ -139,7 +139,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
             <a href="#">Privacy Policy</a>
             <a href="#">Career Opportunities</a>
             <a href="#">Terms of Use</a>
-            <a href="#">Contact Us</a>
+            <a href="support.php">Contact Us</a>
         </div>
         <p>
             © Copyright 2024 Opus Cinemas. All rights reserved. Co. Reg.

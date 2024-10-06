@@ -82,7 +82,7 @@ session_start();
             <a href="#">Privacy Policy</a>
             <a href="#">Career Opportunities</a>
             <a href="#">Terms of Use</a>
-            <a href="#">Contact Us</a>
+            <a href="support.php">Contact Us</a>
         </div>
         <p>
             © Copyright 2024 Opus Cinemas. All rights reserved. Co. Reg.

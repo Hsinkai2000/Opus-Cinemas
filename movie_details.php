@@ -52,9 +52,9 @@ $genre_stmt->close();
         </div>
         <?php
         if (!isset($_SESSION['user_id'])) { ?>
-        <a class="navlink login" href="login.php">Login</a>
+            <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-        <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+            <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 
@@ -66,9 +66,9 @@ $genre_stmt->close();
                 <h2><?php echo $movie['title'] ?></h2>
                 <div class="genre_section">
                     <?php while ($row = $genre_list->fetch_assoc()) { ?>
-                    <div>
-                        <div class="genre_bubble"><?php echo $row["genre"]; ?></div>
-                    </div>
+                        <div>
+                            <div class="genre_bubble"><?php echo $row["genre"]; ?></div>
+                        </div>
 
                     <?php } ?>
                 </div>
@@ -115,10 +115,10 @@ $genre_stmt->close();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
-                    <img src="<?php echo $row["picture"]; ?>" alt="" />
-                    <span><?php echo $row["title"]; ?></span>
-                </div>
+                        <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
+                            <img src="<?php echo $row["picture"]; ?>" alt="" />
+                            <span><?php echo $row["title"]; ?></span>
+                        </div>
 
                 <?php
                     }
@@ -137,7 +137,7 @@ $genre_stmt->close();
             <a href="#">Privacy Policy</a>
             <a href="#">Career Opportunities</a>
             <a href="#">Terms of Use</a>
-            <a href="#">Contact Us</a>
+            <a href="support.php">Contact Us</a>
         </div>
         <p>
             © Copyright 2024 Opus Cinemas. All rights reserved. Co. Reg.

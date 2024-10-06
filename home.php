@@ -40,9 +40,9 @@ session_start();
         </div>
         <?php
         if (!isset($_SESSION['user_id'])) { ?>
-        <a class="navlink login" href="login.php">Login</a>
+            <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-        <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+            <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 
@@ -66,10 +66,10 @@ session_start();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
-                    <img src="<?php echo $row["picture"]; ?>" alt="" />
-                    <span><?php echo $row["title"]; ?></span>
-                </div>
+                        <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
+                            <img src="<?php echo $row["picture"]; ?>" alt="" />
+                            <span><?php echo $row["title"]; ?></span>
+                        </div>
 
                 <?php
                     }
@@ -94,10 +94,10 @@ session_start();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
-                    <img src="<?php echo $row["picture"]; ?>" alt="" />
-                    <span><?php echo $row["title"]; ?></span>
-                </div>
+                        <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
+                            <img src="<?php echo $row["picture"]; ?>" alt="" />
+                            <span><?php echo $row["title"]; ?></span>
+                        </div>
 
                 <?php
                     }
@@ -119,7 +119,7 @@ session_start();
             <a href="#">Privacy Policy</a>
             <a href="#">Career Opportunities</a>
             <a href="#">Terms of Use</a>
-            <a href="#">Contact Us</a>
+            <a href="support.php">Contact Us</a>
         </div>
         <p>
             © Copyright 2024 Opus Cinemas. All rights reserved. Co. Reg.
