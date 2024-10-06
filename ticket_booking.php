@@ -77,9 +77,9 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         </div>
         <?php
         if (!isset($_SESSION['user_id'])) { ?>
-        <a class="navlink login" href="login.php">Login</a>
+            <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-        <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+            <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 
@@ -96,12 +96,12 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                         <?php
                         while ($row = $locationList->fetch_assoc()) {
                         ?>
-                        <li class="splide__slide">
-                            <input type="radio" id="cinema_<?php echo $row['id']; ?>" name="movie"
-                                value="<?php echo $row['name']; ?>" onchange="check2()">
-                            <label for="cinema_<?php echo $row['id']; ?>"
-                                class="genre_bubble"><?php echo $row['name']; ?></label>
-                        </li>
+                            <li class="splide__slide">
+                                <input type="radio" id="cinema_<?php echo $row['id']; ?>" name="movie"
+                                    value="<?php echo $row['name']; ?>" onchange="check2()">
+                                <label for="cinema_<?php echo $row['id']; ?>"
+                                    class="genre_bubble"><?php echo $row['name']; ?></label>
+                            </li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -116,12 +116,12 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                         <?php
                         while ($row = $timing_result->fetch_assoc()) {
                         ?>
-                        <li class="splide__slide">
-                            <input type="radio" id="genre_<?php echo $row['id']; ?>" name="genre"
-                                value="<?php echo $row['timing']; ?>" onchange="check()">
-                            <label for="genre_<?php echo $row['id']; ?>"
-                                class="genre_bubble"><?php echo $row['timing']; ?></label>
-                        </li>
+                            <li class="splide__slide">
+                                <input type="radio" id="genre_<?php echo $row['id']; ?>" name="genre"
+                                    value="<?php echo $row['timing']; ?>" onchange="check()">
+                                <label for="genre_<?php echo $row['id']; ?>"
+                                    class="genre_bubble"><?php echo $row['timing']; ?></label>
+                            </li>
 
                         <?php } ?>
                     </ul>
@@ -149,21 +149,21 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     <script src="scripts/ticket_booking.js" async defer></script>
 </body>
 <script>
-new Splide('#cinemaSplide', {
-    type: 'slide',
-    perPage: 3,
-    height: 100,
-    gap: 10,
-    pagination: false
-}).mount();
+    new Splide('#cinemaSplide', {
+        type: 'slide',
+        perPage: 3,
+        height: 100,
+        gap: 10,
+        pagination: false
+    }).mount();
 
-new Splide('#timeSplide', {
-    type: 'slide',
-    perPage: 3,
-    height: 100,
-    gap: 10,
-    pagination: false
-}).mount();
+    new Splide('#timeSplide', {
+        type: 'slide',
+        perPage: 3,
+        height: 100,
+        gap: 10,
+        pagination: false
+    }).mount();
 </script>
 
 </html>
