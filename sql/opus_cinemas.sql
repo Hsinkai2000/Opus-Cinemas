@@ -57,7 +57,6 @@ CREATE TABLE bookings (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
   movie_timing_id INT,
-  seats VARCHAR(255),
   price VARCHAR(255),
   name VARCHAR(255),
   email VARCHAR(255),
@@ -79,6 +78,12 @@ CREATE TABLE genres (
     genre VARCHAR(255)
 );
 
+CREATE TABLE seats (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  booking_id INT,
+  seat VARCHAR(255),
+  FOREIGN KEY (booking_id) references bookings(id)
+);
 
 INSERT INTO users (email, password) VALUES 
 ('john.doe@example.com', '123'), -- password: secret123
@@ -283,3 +288,69 @@ INSERT INTO movie_timings (cinema_id, movie_id, timing) VALUES
 (3, 6, DATE_ADD(@today, INTERVAL 13 HOUR)), 
 (3, 6, DATE_ADD(@today, INTERVAL 16 HOUR)), 
 (3, 6, DATE_ADD(@today, INTERVAL 19 HOUR)); 
+
+
+INSERT INTO bookings (user_id, movie_timing_id, price, name, email) VALUES
+(1, 1, 29, 'Jonathan', 'jonathan1@email.com'),
+(2, 1, 29, 'Emily', 'emily2@email.com'),
+(3, 2, 29, 'Michael', 'michael3@email.com'),
+(4, 2, 29, 'Sophia', 'sophia4@email.com'),
+(5, 3, 29, 'Daniel', 'daniel5@email.com'),
+(6, 3, 29, 'Olivia', 'olivia6@email.com'),
+(1, 4, 29, 'Jonathan', 'jonathan1@email.com'),
+(2, 4, 29, 'Emily', 'emily2@email.com'),
+(3, 5, 29, 'Michael', 'michael3@email.com'),
+(4, 5, 29, 'Sophia', 'sophia4@email.com'),
+(5, 6, 29, 'Daniel', 'daniel5@email.com'),
+(6, 6, 29, 'Olivia', 'olivia6@email.com'),
+(1, 7, 29, 'Jonathan', 'jonathan1@email.com'),
+(2, 7, 29, 'Emily', 'emily2@email.com'),
+(3, 8, 29, 'Michael', 'michael3@email.com'),
+(4, 8, 29, 'Sophia', 'sophia4@email.com'),
+(5, 9, 29, 'Daniel', 'daniel5@email.com'),
+(6, 9, 29, 'Olivia', 'olivia6@email.com'),
+(1, 10, 29, 'Jonathan', 'jonathan1@email.com'),
+(2, 10, 29, 'Emily', 'emily2@email.com'),
+(3, 11, 29, 'Michael', 'michael3@email.com'),
+(4, 11, 29, 'Sophia', 'sophia4@email.com'),
+(5, 12, 29, 'Daniel', 'daniel5@email.com'),
+(6, 12, 29, 'Olivia', 'olivia6@email.com'),
+(1, 13, 29, 'Jonathan', 'jonathan1@email.com'),
+(2, 14, 29, 'Emily', 'emily2@email.com'),
+(3, 15, 29, 'Michael', 'michael3@email.com'),
+(4, 15, 29, 'Sophia', 'sophia4@email.com'),
+(5, 16, 29, 'Daniel', 'daniel5@email.com'),
+(6, 17, 29, 'Olivia', 'olivia6@email.com'),
+(1, 18, 29, 'Jonathan', 'jonathan1@email.com'),
+(2, 18, 29, 'Emily', 'emily2@email.com'),
+(3, 19, 29, 'Michael', 'michael3@email.com'),
+(4, 19, 29, 'Sophia', 'sophia4@email.com'),
+(5, 20, 29, 'Daniel', 'daniel5@email.com'),
+(6, 21, 29, 'Olivia', 'olivia6@email.com'),
+(1, 22, 29, 'Jonathan', 'jonathan1@email.com'),
+(2, 23, 29, 'Emily', 'emily2@email.com'),
+(3, 24, 29, 'Michael', 'michael3@email.com'),
+(4, 25, 29, 'Sophia', 'sophia4@email.com'),
+(5, 25, 29, 'Daniel', 'daniel5@email.com'),
+(6, 26, 29, 'Olivia', 'olivia6@email.com'),
+(1, 27, 29, 'Jonathan', 'jonathan1@email.com'),
+(2, 27, 29, 'Emily', 'emily2@email.com'),
+(3, 28, 29, 'Michael', 'michael3@email.com'),
+(4, 28, 29, 'Sophia', 'sophia4@email.com'),
+(5, 29, 29, 'Daniel', 'daniel5@email.com'),
+(6, 30, 29, 'Olivia', 'olivia6@email.com');
+
+
+INSERT INTO seats (booking_id, seat)
+VALUES
+(1, 'A1'), (1, 'A2'), (1, 'A3'),
+(2, 'B4'), (2, 'B5'),
+(3, 'C6'), (3, 'C7'), (3, 'C8'),
+(4, 'D9'), (4, 'D10'), (4, 'D11'), (4, 'D12'),
+(5, 'E3'), (5, 'E4'),
+(6, 'F5'), (6, 'F6'), (6, 'F7'),(7, 'A1'), (7, 'A2'), (7, 'A3'),
+(8, 'B5'), (8, 'B6'),
+(9, 'C2'), (9, 'C3'), (9, 'C4'),
+(10, 'D8'), (10, 'D9'), (10, 'D10'),
+(11, 'E11'), (11, 'E12'),
+(12, 'F2'), (12, 'F3'), (12, 'F4');

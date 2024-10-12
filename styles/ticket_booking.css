@@ -5,6 +5,7 @@
 
 .movie-image {
     width: 30%;
+    align-self: flex-start;
 }
 
 .booking-details {
@@ -14,34 +15,106 @@
     justify-content: flex-start;
 }
 
-.splide {
-    width: 100%;
-}
-
-.splide__track {
-    width: 80%;
-    margin: auto;
-}
-
-.splide__slide input[type="radio"] {
-    display: none; /* Hide the default radio buttons */
-}
-
-/* Default background color for unselected labels */
 .genre_bubble {
-    background-color: #3d3c52; /* Default color */
+    background-color: #3d3c52; 
     border-radius: 30px;
     text-align: center;
     padding: 10px 40px;
     height: 50px;
     display: inline-block;
     cursor: pointer;
-    color: white; /* Text color */
-    margin: 10px; /* Spacing between bubbles */
-    transition: background-color 0.3s; /* Smooth background change */
+    color: white; 
+    margin: 10px; 
+    transition: background-color 0.3s; 
 }
 
-/* Optional: Change color on hover */
 .genre_bubble:hover {
-    background-color: #7773be; /* Darker shade on hover */
+    background-color: #7773be; /
+}
+
+.seating {
+    margin: 30px 0;
+    width: 100%;
+}
+
+.seating-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.row {
+    height: 20px;
+}
+
+.row td,
+.row th {
+    text-align: start;
+}
+.seating-table .blank-row {
+    height: 40px;
+}
+.legend,
+.legend-item {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.seat-taken {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+}
+
+.seat-available {
+    width: 20px;
+    height: 20px;
+    background-color: gray;
+}
+
+
+.seat-available:hover {
+    background-color: rgb(179, 172, 172);
+    cursor:pointer;
+}
+
+
+.seat-selected {
+    width: 20px;
+    height: 20px;
+    background-color: cyan;
+}
+
+.seat-selected:hover{
+    cursor:pointer;
+}
+
+.screen {
+    background-color: #3d3c52;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.right-page{
+    width: 87%;
+}
+
+select {
+    width: 40%;
+    height: 30px;
+    background-color: gainsboro;
+}
+
+.booking-prices{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.blue_button{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

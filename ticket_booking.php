@@ -12,9 +12,6 @@ $movie = $result->fetch_assoc();
 
 $movie_stmt->close();
 
-
-
-
 $movie_location_stmt = $conn->prepare("SELECT DISTINCT c.name, c.id 
 FROM cinemas c
 JOIN movie_timings mt ON c.id = mt.cinema_id
@@ -27,21 +24,9 @@ $locationList = $movie_location_stmt->get_result();
 
 $movie_location_stmt->close();
 
-$movie_timing_stmt = $conn->prepare("SELECT * from movie_timings where movie_id = ?");
-$movie_timing_stmt->bind_param("i", $movie_id);
-
-$movie_timing_stmt->execute();
-$timing_result = $movie_timing_stmt->get_result();
-
-$movie_timing_stmt->close();
-
 
 ?>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 
 <head>
@@ -51,14 +36,6 @@ $movie_timing_stmt->close();
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="
-https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
-"></script>
-    <link href="
-https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
-" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/ticket_booking.css">
 </head>
@@ -77,9 +54,9 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         </div>
         <?php
         if (!isset($_SESSION['user_id'])) { ?>
-            <a class="navlink login" href="login.php">Login</a>
+        <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-            <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+        <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 
@@ -88,47 +65,113 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         <div class="booking-details">
             <h1><?php echo $movie['title']; ?></h1>
 
-            <span>Cinema</span>
-            <br>
-            <section class="splide" id="cinemaSplide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <?php
-                        while ($row = $locationList->fetch_assoc()) {
-                        ?>
-                            <li class="splide__slide">
-                                <input type="radio" id="cinema_<?php echo $row['id']; ?>" name="movie"
-                                    value="<?php echo $row['name']; ?>" onchange="check2()">
-                                <label for="cinema_<?php echo $row['id']; ?>"
-                                    class="genre_bubble"><?php echo $row['name']; ?></label>
-                            </li>
-                        <?php } ?>
-                    </ul>
+            <div class='right-page'>
+                <span>Cinema</span>
+                <br>
+                <select name="cinema" id="selectCinema" onchange="fetchTiming()">
+                    <?php foreach ($locationList as $location) {
+                    ?>
+                    <option value="<?php echo $location['id'] ?>"><?php echo $location['name'] ?></option>
+                    <?php } ?>
+                </select>
+
+                <br>
+                <br>
+                <span>Time Slot</span>
+                <br>
+
+                <select name="timing" id="selectTiming" onchange="regenerateSeatingTable()">
+
+                </select>
+
+                <div class="seating">
+                    <table class="seating-table">
+                        <tr class="row first">
+                            <th></th>
+                            <?php for ($i = 1; $i <= 12; $i++): ?>
+                            <?php if ($i == 6): ?>
+                            <th colspan="2"></th>
+                            <?php endif; ?>
+                            <th><?= $i ?></th>
+                            <?php endfor; ?>
+                        </tr>
+                    </table>
                 </div>
-            </section>
 
+                <div class="screen">Screen</div>
 
-            <span>Time Slot</span>
-            <br>
-            <section class="splide" id="timeSplide">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <?php
-                        while ($row = $timing_result->fetch_assoc()) {
-                        ?>
-                            <li class="splide__slide">
-                                <input type="radio" id="genre_<?php echo $row['id']; ?>" name="genre"
-                                    value="<?php echo $row['timing']; ?>" onchange="check()">
-                                <label for="genre_<?php echo $row['id']; ?>"
-                                    class="genre_bubble"><?php echo $row['timing']; ?></label>
-                            </li>
-
-                        <?php } ?>
-                    </ul>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="seat-taken"></div>
+                        <span>Seat Taken</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="seat-available"></div>
+                        <span>Seat Available</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="seat-selected"></div>
+                        <span>Seat Selected</span>
+                    </div>
                 </div>
-            </section>
 
+                <table class="booking-prices">
+                    <tr>
+                        <td>
+                            <h3>Seats:</h3>
+                        </td>
+                        <td>
+                            <span id="selected-seats">-</span>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h3>Price:</h3>
+                        </td>
+                        <td>
+                            <span id="standardTicketLabel">Standard Ticket x [add qty]</span>
+                        </td>
+                        <td>
+                            <span id="standardTicketAmt">$9.00 x [add qty]</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <span>GST 7%</span>
+                        </td>
+                        <td>
+                            <span id="gstAmt">$[calculateGST]</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <span style="text-decoration: underline;">Total</span>
+                        </td>
+                        <td>
+                            <span id="totalAmt">$[calculate total]</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="2">
+                            <button class="blue_button" type="button" onclick="proceedToPayment()">Proceed to
+                                Payment</button>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
         </div>
+
+    </div>
     </div>
 
 
@@ -147,23 +190,9 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
         </p>
     </footer>
     <script src="scripts/ticket_booking.js" async defer></script>
+    <script>
+    window.movieId = <?php echo $movie_id; ?>;
+    </script>
 </body>
-<script>
-    new Splide('#cinemaSplide', {
-        type: 'slide',
-        perPage: 3,
-        height: 100,
-        gap: 10,
-        pagination: false
-    }).mount();
-
-    new Splide('#timeSplide', {
-        type: 'slide',
-        perPage: 3,
-        height: 100,
-        gap: 10,
-        pagination: false
-    }).mount();
-</script>
 
 </html>
