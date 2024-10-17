@@ -1,9 +1,19 @@
 <?php
 include 'database_connection.php';
 session_start();
+// Retrieve the stored values from the session
+$seatsArray = isset($_SESSION['selected_seats']) ? $_SESSION['selected_seats'] : [1,2,3];
+$cinemaId = isset($_SESSION['cinema_id']) ? $_SESSION['cinema_id'] : null;
+$movieId = isset($_SESSION['movie_id']) ? $_SESSION['movie_id'] : null;
+$timing = isset($_SESSION['timing']) ? $_SESSION['timing'] : null;
 
+$movie_sql = "SELECT * FROM movies where id = " . $movieId;
+        $movie_result = $conn->query($movie_sql);
 
-
+        while ($row = $movie_result->fetch_assoc()) {
+          $title = $row["title"];
+          $picture = $row["picture"];
+        }
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +22,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Opus | <?php echo $movie['title'] ?></title>
+    <title>Opus</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/global.css">
@@ -41,39 +51,34 @@ session_start();
     <?php 
       
   
-        // Get the raw POST data (JSON format)
-        $json = file_get_contents('php://input');
-        
-        // Decode the JSON data to a PHP associative array
-        $postData = json_decode($json, true);
-        
-        // Extract individual data points from the associative array
-        $seats = isset($postData['seats']) ? $postData['seats'] : [];
-        $cinema_id = isset($postData['cinema_id']) ? $postData['cinema_id'] : '';
-        $movie_id = isset($postData['movie_id']) ? $postData['movie_id'] : '';
-        $timing = isset($postData['timing']) ? $postData['timing'] : '';
-    
         // Example of printing the data (useful for debugging)
-        echo "Seats: " . implode(", ", $seats) . "<br>";
-        echo "Cinema ID: " . htmlspecialchars($cinema_id) . "<br>";
-        echo "Movie ID: " . htmlspecialchars($movie_id) . "<br>";
-        echo "Timing: " . htmlspecialchars($timing) . "<br>";
-    
+        
+        echo "<pre>";
+        print_r($seatsArray);
+        echo "</pre>";
+        
+      
+        echo "cinemaID: ". $cinemaId . "<br>";
+        echo "movieID:". $movieId . "<br>";
+        echo "timing:" . $timing . "<br>";
+        
+        
+
       
     ?>
 
     <div class="wrapper">
-      <img class="movie-image" src="assets/covers/avatar_the_last_airbender_cover.png" alt="<?php echo $movie['title'] ?>">
+      <img class="movie-image" src="<?php echo $picture?>" alt="Movie">
       <div class="content">
           <div class="booking-details">
-            <h2>Avatar: The Last Airbender</h2>
+            <h2><?php echo $title; ?></h2>
             <table class="booking-prices">
               <tr>
                 <td>
                   <h3>Time Slot:</h3>
                 </td>
                 <td>
-                  <span id="selected-seats">-</span>
+                  <span"><?php echo $timing?></span>
                 </td>
                 <td></td>
               </tr>
