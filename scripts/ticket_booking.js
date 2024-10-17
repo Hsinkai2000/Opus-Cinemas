@@ -201,7 +201,7 @@ function proceedToPayment() {
     })
         .then((response) => {
             if (response.ok) {
-                window.location.href = "newpage.php";
+                window.location.href = "payment.php";
             } else {
                 console.error("Failed to store data");
             }

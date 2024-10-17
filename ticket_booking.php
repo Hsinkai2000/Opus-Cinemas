@@ -186,7 +186,7 @@ $movie_location_stmt->close();
         </div>
         <p>
             © Copyright 2024 Opus Cinemas. All rights reserved. Co. Reg.
-            No.: 194700158G
+            No.: 194700158Gf
         </p>
     </footer>
     <script src="scripts/ticket_booking.js" async defer></script>
