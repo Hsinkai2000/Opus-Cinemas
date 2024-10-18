@@ -2,18 +2,42 @@
 include 'database_connection.php';
 session_start();
 // Retrieve the stored values from the session
-$seatsArray = isset($_SESSION['selected_seats']) ? $_SESSION['selected_seats'] : [1,2,3];
+$seatsArray = isset($_SESSION['selected_seats']) ? $_SESSION['selected_seats'] : [];
 $cinemaId = isset($_SESSION['cinema_id']) ? $_SESSION['cinema_id'] : null;
 $movieId = isset($_SESSION['movie_id']) ? $_SESSION['movie_id'] : null;
 $timing = isset($_SESSION['timing']) ? $_SESSION['timing'] : null;
 
 $movie_sql = "SELECT * FROM movies where id = " . $movieId;
-        $movie_result = $conn->query($movie_sql);
+$movie_result = $conn->query($movie_sql);
 
-        while ($row = $movie_result->fetch_assoc()) {
-          $title = $row["title"];
-          $picture = $row["picture"];
-        }
+while ($row = $movie_result->fetch_assoc()) {
+  $title = $row["title"];
+  $picture = $row["picture"];
+}
+
+$cinema_sql = "SELECT * FROM cinemas where id = " . $cinemaId;
+$cinema_result = $conn->query($cinema_sql);
+
+while ($row = $cinema_result->fetch_assoc()) {
+  $cinema = $row["name"];
+}
+
+$movie_timing_id_sql = "SELECT * FROM movie_timings WHERE movie_id = ? AND cinema_id = ? and timing = ?";
+$stmt = $conn->prepare($movie_timing_id_sql);
+
+// Bind the parameters securely
+$stmt->bind_param("iis", $movieId, $cinemaId, $timing);
+
+// Execute the query
+$stmt->execute();
+
+// Fetch results
+$movie_timing_result = $stmt->get_result();
+while ($row = $movie_timing_result->fetch_assoc()) {
+  $movie_timing_id = $row["id"];
+}
+
+$seatsCount = count($seatsArray);
 
 ?>
 <!DOCTYPE html>
@@ -56,12 +80,18 @@ $movie_sql = "SELECT * FROM movies where id = " . $movieId;
         echo "<pre>";
         print_r($seatsArray);
         echo "</pre>";
+
+        echo "<br>";
+
+        foreach($seatsArray as $seat) {
+          echo $seat . " ";
+        }
         
       
         echo "cinemaID: ". $cinemaId . "<br>";
         echo "movieID:". $movieId . "<br>";
         echo "timing:" . $timing . "<br>";
-        
+        echo "movie_timing_id:" . $movie_timing_id . "<br>";
         
 
       
@@ -73,6 +103,16 @@ $movie_sql = "SELECT * FROM movies where id = " . $movieId;
           <div class="booking-details">
             <h2><?php echo $title; ?></h2>
             <table class="booking-prices">
+              <tr>
+                <td>
+                  <h3>Cinema:</h3>
+                </td>
+                <td>
+                  <span"><?php echo $cinema?></span>
+                </td>
+                <td></td>
+              </tr>
+
               <tr>
                 <td>
                   <h3>Time Slot:</h3>
@@ -88,7 +128,7 @@ $movie_sql = "SELECT * FROM movies where id = " . $movieId;
                   <h3>Seats:</h3>
                 </td>
                 <td>
-                  <span id="selected-seats">-</span>
+                  <span id="selected-seats"><?php echo implode(", ", $seatsArray); ?></span>
                 </td>
                 <td></td>
               </tr>
@@ -98,21 +138,22 @@ $movie_sql = "SELECT * FROM movies where id = " . $movieId;
                   <h3>Price:</h3>
                 </td>
                 <td>
-                  <span id="standardTicketLabel">Standard Ticket x [add qty]</span>
+                  <span id="standardTicketLabel">Standard Ticket x <?php echo $seatsCount;?></span>
                 </td>
                 <td>
-                  <span id="standardTicketAmt">$9.00 x [add qty]</span>
+                  <span id="standardTicketAmt">$9.00 x <?php echo $seatsCount;?></span>
                 </td>
               </tr>
 
               <tr>
                 <td>
+                  
                 </td>
                 <td>
                   <span>GST 7%</span>
                 </td>
                 <td>
-                  <span id="gstAmt">$[calculateGST]</span>
+                  <span id="gstAmt">$<?php echo (0.07 * $seatsCount * 9);?></span>
                 </td>
               </tr>
 
@@ -123,7 +164,7 @@ $movie_sql = "SELECT * FROM movies where id = " . $movieId;
                   <span style="text-decoration: underline;">Total</span>
                 </td>
                 <td>
-                  <span id="totalAmt">$[calculate total]</span>
+                  <span id="totalAmt">$<?php echo ($seatsCount * 9 * 1.07);?></span>
                 </td>
               </tr>
                       

@@ -181,12 +181,14 @@ function proceedToPayment() {
     const selectedTiming =
         selectTiming.options[selectTiming.selectedIndex].value;
 
-    const selectedSeats = Array.from(
-        document.querySelectorAll(".selected-seat")
-    ).map((seat) => seat.dataset.value);
+    const selectedSeatsArray = Array.from(selectedSeats);
+
+    // const selectedSeats = Array.from(
+    //     document.querySelectorAll(".selected-seat")
+    // ).map((seat) => seat.dataset.value);
 
     const data = {
-        seats: selectedSeats,
+        seats: selectedSeatsArray,
         cinema_id: selectedCinema,
         movie_id: window.movieId,
         timing: selectedTiming,
