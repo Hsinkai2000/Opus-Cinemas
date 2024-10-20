@@ -183,7 +183,7 @@ $seatsCount = count($seatsArray);
 
           <div class="payment-details">
         
-          <form>
+          <form action="bookings.php" method="post">
             <label for="email">Name on Card:</label>
             <input type="text" name="name-on-card" placeholder="Enter your name" required />
             <label for="card-number">Card Number</label>
@@ -206,14 +206,11 @@ $seatsCount = count($seatsArray);
             <input type="text" placeholder="Your Name" name="name" required />
             <label for="name">Email</label>
             <input type="email" name="email" placeholder="Enter Email" required />
-            
-
-
+            <input type="hidden" name="movie_timing_id" value="<?php echo $movie_timing_id;?>">
+            <input type="hidden" name="price" value="<?php echo ($seatsCount * 9 * 1.07);?>">
+            <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'];?>">
             <div class="actions">
-              <button type="submit" name="pay" id="payButton" class="blue_button">
-                Pay
-              </button>
-              
+              <button type="submit" name="pay" id="payButton" class="blue_button">Pay</button>
             </div>
           </form>
           </div>
@@ -236,7 +233,7 @@ $seatsCount = count($seatsArray);
 
     <script src="scripts/ticket_booking.js" async defer></script>
     <script>
-    window.movieId = <?php echo $movie_id; ?>;
+
     </script>
 </body>
 

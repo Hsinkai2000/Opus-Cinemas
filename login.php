@@ -76,5 +76,4 @@
     </footer>
     <script src="scripts/login.js" async defer></script>
   </body>
-
 </html>
