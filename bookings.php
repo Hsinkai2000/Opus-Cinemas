@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $stmt->execute();
     }
     
-    header("Location: home.php?");
+    header("Location: home.php");
     exit();
   } else {
       echo "Error: " . $stmt->error;

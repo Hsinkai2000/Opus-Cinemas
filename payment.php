@@ -71,32 +71,6 @@ $serializedSeats = serialize($seatsArray);
         <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
       <?php } ?>
   </header>
-
-    <?php 
-      
-  
-        // Example of printing the data (useful for debugging)
-        
-        echo "<pre>";
-        print_r($seatsArray);
-        echo "</pre>";
-
-        echo "<br>";
-
-        foreach($seatsArray as $seat) {
-          echo $seat . " ";
-        }
-        
-      
-        echo "cinemaID: ". $cinemaId . "<br>";
-        echo "movieID:". $movieId . "<br>";
-        echo "timing:" . $timing . "<br>";
-        echo "movie_timing_id:" . $movie_timing_id . "<br>";
-        
-
-      
-    ?>
-
     <div class="wrapper">
       <img class="movie-image" src="<?php echo $picture?>" alt="Movie">
       <div class="content">
