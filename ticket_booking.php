@@ -56,7 +56,7 @@ $movie_location_stmt->close();
         if (!isset($_SESSION['user_id'])) { ?>
         <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-        <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+        <a class="navlink login" href="account.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 

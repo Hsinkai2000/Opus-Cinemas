@@ -91,6 +91,7 @@ INSERT INTO users (email, password) VALUES
 ('alice.brown@example.com', 'hahahahahaha'), -- password: secret123
 ('bob.johnson@example.com', 'gpa5pointer'), -- password: secret123
 ('charlie.davis@example.com', 'ie4727'),
+('bla.davis@example.com', '123'),
 ('irfansyakir@gmail.com', 'plswork');
 
 INSERT INTO genres (movie_id,genre) VALUES (1, "Animation");

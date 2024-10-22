@@ -1,6 +1,8 @@
 <?php
 include 'database_connection.php';
 session_start();
+
+  
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -16,7 +18,7 @@ session_start();
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/global.css?v=1" />
     <link rel="stylesheet" href="styles/home.css" />
 </head>
 
@@ -42,7 +44,7 @@ session_start();
         if (!isset($_SESSION['user_id'])) { ?>
             <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-            <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+            <a class="navlink login" href="account.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 

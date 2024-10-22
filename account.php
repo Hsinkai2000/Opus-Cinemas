@@ -1,7 +1,76 @@
 <?php
 include 'database_connection.php';
 session_start();
+$bookingIds = array();
+$movieTimingIds = array();
+$movieTimings = array();
+$movieIds = array();
+$movieTitles = array();
+$moviePictures = array();
+$cinemaIds = array();
+$cinemaNames = array();
 
+$stmt = $conn->prepare("SELECT * FROM bookings WHERE user_id = ? ");
+$stmt->bind_param("s", $_SESSION['user_id']); 
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+  $bookingIds[] = $row["id"];
+  $movieTimingIds[] = $row["movie_timing_id"];
+}
+
+foreach ($movieTimingIds as $movieTimingId) {
+  $stmt = $conn->prepare("SELECT * FROM movie_timings WHERE id = ? ");
+  $stmt->bind_param("s", $movieTimingId); 
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  while ($row = $result->fetch_assoc()) {
+    $movieTimings[] = $row["timing"];
+    $cinemaIds[] = $row["cinema_id"];
+    $movieIds[] = $row["movie_id"];
+  }
+}
+
+foreach ($cinemaIds as $cinemaId) {
+  $stmt = $conn->prepare("SELECT * FROM cinemas WHERE id = ? ");
+  $stmt->bind_param("s", $cinemaId); 
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  while ($row = $result->fetch_assoc()) {
+    $cinemaNames[] = $row["name"];
+  }
+}
+
+foreach ($movieIds as $movieId) {
+  $stmt = $conn->prepare("SELECT * FROM movies WHERE id = ? ");
+  $stmt->bind_param("s", $movieId); 
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  while ($row = $result->fetch_assoc()) {
+    $movieTitles[] = $row["title"];
+    $moviePictures[] = $row["picture"];
+  }
+}
+
+// print_r($bookingIds);
+// echo "<br>";
+// print_r($movieTimingIds);
+// echo "<br>";
+// print_r($movieTimings);
+// echo "<br>";
+// print_r($cinemaIds);
+// echo "<br>";
+// print_r($movieIds);
+// echo "<br>";
+// print_r($cinemaNames);
+// echo "<br>";
+// print_r($movieTitles);
+// echo "<br>";
+// print_r($moviePictures);
 ?>
 
 <!DOCTYPE html>
@@ -31,50 +100,37 @@ session_start();
     <?php } ?>
   </header>
 
-    <div class="wrapper">
-        <section>
-            <h3>Upcoming</h3>
-            <div class="movie-item">
-                <img src="assets/covers/avatar_the_last_airbender_cover.png" alt="Avatar: The Last Airbender Poster">
-                <div class="movie-details">
-                    <h3>Avatar: The Last Airbender</h3>
-                    <p>Time Slot: 1:30 PM</p>
-                    <p>Seats: A1, A2</p>
-                </div>
-                <div class="button-container">
-                    <button class="blue_button">View Ticket</button>
-                    <button class="blue_button">View Invoice</button>
-                </div>
-            </div>
-        </section>
+  <div class="wrapper">
+    <section>
+      <h3>Upcoming</h3>
 
-        <!-- <section>
-            <h3>History</h3>
-            <div class="movie-item">
-                <img src="assets/covers/inside_out_2_cover.png" alt="Inside Out 2 Poster">
-                <div class="movie-details">
-                    <h3>Inside Out 2</h3>
-                    <p>Time Slot: 2:30 PM</p>
-                    <p>Seats: C5</p>
-                </div>
-                <div class="button-container">
-                    <button class="blue_button">View Invoice</button>
-                </div>
-            </div>
-            <div class="movie-item">
-                <img src="assets/covers/wonka_cover.png" alt="Wonka Poster">
-                <div class="movie-details">
-                    <h3>Wonka</h3>
-                    <p>Time Slot: 1:30 PM</p>
-                    <p>Seats: A1, A2</p>
-                </div>
-                <div class="button-container">
-                    <button class="blue_button">View Invoice</button>
-                </div>
-            </div>
-        </section> -->
+        <?php foreach ($bookingIds as $index => $bookingId) {
+          $stmt = $conn->prepare("SELECT * FROM seats WHERE booking_id = ? ");
+          $stmt->bind_param("s", $bookingId); 
+          $stmt->execute();
+          $result = $stmt->get_result();
+
+          $seats = array();
+
+          while ($row = $result->fetch_assoc()) {
+            $seats[] = $row["seat"];
+          }
+        ?>
+          <div class="movie-item">
+              <img src="<?php echo htmlspecialchars($moviePictures[$index]); ?>" alt="<?php echo htmlspecialchars($movieTitles[$index]) . ' Poster'; ?>">
+              <div class="movie-details">
+                  <h3><?php echo htmlspecialchars($movieTitles[$index]); ?></h3>
+                  <p>Time Slot: <?php echo htmlspecialchars($movieTimings[$index]); ?></p>
+                  <p>Seats: <?php echo implode(", ", $seats); ?></p> 
+              </div>
+              <div class="button-container">
+                  <button class="blue_button">View Ticket</button>
+                  <button class="blue_button">View Invoice</button>
+              </div>
+          </div>
+        <?php } ?>
+      </section>
     </div>
-
     <footer>
         <div class="footerlink">
             <a href="#">FAQ</a>
