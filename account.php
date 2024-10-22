@@ -56,20 +56,21 @@ foreach ($movieIds as $movieId) {
   }
 }
 
+// echo "BookingIds: ";
 // print_r($bookingIds);
-// echo "<br>";
+// echo "<br> movieTimingIds: ";
 // print_r($movieTimingIds);
-// echo "<br>";
+// echo "<br> movieTimings: ";
 // print_r($movieTimings);
-// echo "<br>";
+// echo "<br> cinemaIds: ";
 // print_r($cinemaIds);
-// echo "<br>";
+// echo "<br> movieIds: ";
 // print_r($movieIds);
-// echo "<br>";
+// echo "<br> cinemaNames: ";
 // print_r($cinemaNames);
-// echo "<br>";
+// echo "<br> movieTitles: ";
 // print_r($movieTitles);
-// echo "<br>";
+// echo "<br> moviePictures: ";
 // print_r($moviePictures);
 ?>
 
@@ -80,7 +81,7 @@ foreach ($movieIds as $movieId) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/account.css?v=1">
     <link rel="stylesheet" href="styles/global.css?v=1">
-    <title>Booking Management</title>
+    <title>Opus | Account </title>
 </head>
 <body>
   <header>
@@ -96,7 +97,7 @@ foreach ($movieIds as $movieId) {
     if (!isset($_SESSION['user_id'])) { ?>
         <a class="navlink login" href="login.php">Login</a>
     <?php } else { ?>
-        <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+        <a class="navlink login" href="logout.php">Logout</a>
     <?php } ?>
   </header>
 
@@ -123,10 +124,10 @@ foreach ($movieIds as $movieId) {
                   <p>Time Slot: <?php echo htmlspecialchars($movieTimings[$index]); ?></p>
                   <p>Seats: <?php echo implode(", ", $seats); ?></p> 
               </div>
-              <div class="button-container">
+              <!-- <div class="button-container">
                   <button class="blue_button">View Ticket</button>
                   <button class="blue_button">View Invoice</button>
-              </div>
+              </div> -->
           </div>
         <?php } ?>
       </section>
