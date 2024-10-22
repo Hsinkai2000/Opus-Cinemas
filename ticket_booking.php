@@ -45,9 +45,7 @@ $movie_location_stmt->close();
         <h3>Opus Cinemas</h3>
         <div>
             <ul class="nav">
-                <li class="navlink">
-                    <a class="active" href="home.php">Home</a>
-                </li>
+                <li class="navlink"><a class="active" href="home.php">Home</a></li>
                 <li class="navlink"><a href="cinemas.php">Cinemas</a></li>
                 <li class="navlink"><a href="now_showing.php">Now Showing</a></li>
             </ul>
@@ -162,8 +160,12 @@ $movie_location_stmt->close();
                     <tr>
                         <td></td>
                         <td colspan="2">
-                            <button class="blue_button" type="button" onclick="proceedToPayment()">Proceed to
-                                Payment</button>
+                          <?php
+                          if (isset($_SESSION['user_id'])) { ?>
+                            <button class="blue_button" type="button" onclick="proceedToPayment()">Proceed to Payment</button>
+                          <?php } else { ?>
+                            <button class="blue_button" type="button"onclick="window.location.href='login.php'">Login/Signup to Proceed</button>
+                          <?php } ?>
                         </td>
                     </tr>
                 </table>
