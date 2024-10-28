@@ -1,11 +1,12 @@
+/* Add Chivo as the default font for body and headers */
 html,
 body {
     background-color: #282430;
     font-size: 1.1rem;
     margin: 0;
     color: #ded7d7;
+    font-family: 'Chivo', sans-serif;  /* Set Chivo as the default font */
 }
-
 
 /* Nav styles */
 .wrapper {
@@ -16,7 +17,6 @@ body {
   justify-content: center;
   margin-bottom: 30px;
 }
-
 
 header {
   margin: 30px auto;
@@ -29,6 +29,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Chivo', sans-serif;  /* Apply Chivo to header text */
 }
 
 header .opus-name {
@@ -51,8 +52,8 @@ header .opus-name {
 header a,
 footer a {
     color: #ded7d7;
-
     text-decoration: none;
+    font-family: 'Chivo', sans-serif;  /* Apply Chivo to nav links */
 }
 
 header a.active {
@@ -89,6 +90,7 @@ footer p {
     padding: 0px 30px 0px 30px;
     display: flex;
     justify-content: space-between;
+    font-family: 'Chivo', sans-serif;  /* Apply Chivo to footer links */
 }
 
 .blue_button,
@@ -100,6 +102,7 @@ footer p {
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    font-family: 'Chivo', sans-serif;  /* Apply Chivo to buttons */
 }
 
 .transparent_button {

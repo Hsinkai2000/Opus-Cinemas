@@ -184,6 +184,12 @@ $serializedSeats = serialize($seatsArray);
             <input type="hidden" name="price" value="<?php echo ($seatsCount * 9 * 1.07);?>">
             <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'];?>">
             <input type="hidden" name="seats" value="<?php echo htmlspecialchars($serializedSeats); ?>">
+            <input type="hidden" name="timing" value="<?php echo $timing;?>">
+            <input type="hidden" name="title" value="<?php echo $title;?>">
+            <input type="hidden" name="cinema" value="<?php echo $cinema;?>">
+
+
+
             <div class="actions">
               <button type="submit" name="pay" id="payButton" class="blue_button">Pay</button>
             </div>

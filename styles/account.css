@@ -49,3 +49,21 @@ section {
   gap: 20px;
   margin-left: auto;
 }
+
+/* Styling for sorting buttons */
+.sort-button {
+  background-color: #7597c9;  /* A nice orange color to make it stand out */
+  color: #fff;                /* White text color for better contrast */
+  padding: 10px 15px;         /* Padding for better spacing */
+  text-decoration: none;      /* Remove underline from links */
+  border-radius: 5px;         /* Rounded corners for a nicer look */
+  margin-right: 10px;         /* Spacing between the buttons */
+  font-weight: bold;          /* Make the text bold */
+}
+
+.sort-button:hover {
+  background-color: #5e7fb0;  /* A slightly darker orange on hover */
+  color: #fff;                /* Ensure the text color stays white */
+  cursor: pointer;            /* Change cursor to pointer */
+}
+

@@ -1,77 +1,37 @@
 <?php
 include 'database_connection.php';
 session_start();
-$bookingIds = array();
-$movieTimingIds = array();
-$movieTimings = array();
-$movieIds = array();
-$movieTitles = array();
-$moviePictures = array();
-$cinemaIds = array();
-$cinemaNames = array();
 
-$stmt = $conn->prepare("SELECT * FROM bookings WHERE user_id = ? ");
+// Set default sort order
+$sortOrder = 'ASC';
+
+// Check if sort order is set in the URL
+if (isset($_GET['sort']) && ($_GET['sort'] == 'asc' || $_GET['sort'] == 'desc')) {
+    $sortOrder = strtoupper($_GET['sort']);
+}
+
+$movies = array();
+
+$stmt = $conn->prepare("SELECT bookings.id AS booking_id, movie_timings.timing, cinemas.name AS cinema_name, movies.title, movies.picture 
+                        FROM bookings 
+                        JOIN movie_timings ON bookings.movie_timing_id = movie_timings.id
+                        JOIN movies ON movie_timings.movie_id = movies.id
+                        JOIN cinemas ON movie_timings.cinema_id = cinemas.id
+                        WHERE bookings.user_id = ?
+                        ORDER BY movie_timings.timing $sortOrder");
 $stmt->bind_param("s", $_SESSION['user_id']); 
 $stmt->execute();
 $result = $stmt->get_result();
 
 while ($row = $result->fetch_assoc()) {
-  $bookingIds[] = $row["id"];
-  $movieTimingIds[] = $row["movie_timing_id"];
+    $movies[] = [
+        "booking_id" => $row["booking_id"],
+        "timing" => $row["timing"],
+        "cinema_name" => $row["cinema_name"],
+        "movie_title" => $row["title"],
+        "movie_picture" => $row["picture"],
+    ];
 }
-
-foreach ($movieTimingIds as $movieTimingId) {
-  $stmt = $conn->prepare("SELECT * FROM movie_timings WHERE id = ? ");
-  $stmt->bind_param("s", $movieTimingId); 
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-  while ($row = $result->fetch_assoc()) {
-    $movieTimings[] = $row["timing"];
-    $cinemaIds[] = $row["cinema_id"];
-    $movieIds[] = $row["movie_id"];
-  }
-}
-
-foreach ($cinemaIds as $cinemaId) {
-  $stmt = $conn->prepare("SELECT * FROM cinemas WHERE id = ? ");
-  $stmt->bind_param("s", $cinemaId); 
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-  while ($row = $result->fetch_assoc()) {
-    $cinemaNames[] = $row["name"];
-  }
-}
-
-foreach ($movieIds as $movieId) {
-  $stmt = $conn->prepare("SELECT * FROM movies WHERE id = ? ");
-  $stmt->bind_param("s", $movieId); 
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-  while ($row = $result->fetch_assoc()) {
-    $movieTitles[] = $row["title"];
-    $moviePictures[] = $row["picture"];
-  }
-}
-
-// echo "BookingIds: ";
-// print_r($bookingIds);
-// echo "<br> movieTimingIds: ";
-// print_r($movieTimingIds);
-// echo "<br> movieTimings: ";
-// print_r($movieTimings);
-// echo "<br> cinemaIds: ";
-// print_r($cinemaIds);
-// echo "<br> movieIds: ";
-// print_r($movieIds);
-// echo "<br> cinemaNames: ";
-// print_r($cinemaNames);
-// echo "<br> movieTitles: ";
-// print_r($movieTitles);
-// echo "<br> moviePictures: ";
-// print_r($moviePictures);
 ?>
 
 <!DOCTYPE html>
@@ -104,44 +64,45 @@ foreach ($movieIds as $movieId) {
   <div class="wrapper">
     <section>
       <h3>Upcoming</h3>
+      <!-- Sorting buttons -->
+      <div class="sorting-buttons">
+        <a href="?sort=asc" class="sort-button">Sort by Time (ASC)</a>
+        <a href="?sort=desc" class="sort-button">Sort by Time (DESC)</a>
+      </div>
 
-        <?php foreach ($bookingIds as $index => $bookingId) {
-          $stmt = $conn->prepare("SELECT * FROM seats WHERE booking_id = ? ");
-          $stmt->bind_param("s", $bookingId); 
+      <?php foreach ($movies as $movie) {
+          $stmt = $conn->prepare("SELECT seat FROM seats WHERE booking_id = ? ");
+          $stmt->bind_param("s", $movie['booking_id']); 
           $stmt->execute();
           $result = $stmt->get_result();
 
           $seats = array();
-
           while ($row = $result->fetch_assoc()) {
-            $seats[] = $row["seat"];
+              $seats[] = $row["seat"];
           }
-        ?>
-          <div class="movie-item">
-              <img src="<?php echo htmlspecialchars($moviePictures[$index]); ?>" alt="<?php echo htmlspecialchars($movieTitles[$index]) . ' Poster'; ?>">
-              <div class="movie-details">
-                  <h3><?php echo htmlspecialchars($movieTitles[$index]); ?></h3>
-                  <p>Time Slot: <?php echo htmlspecialchars($movieTimings[$index]); ?></p>
-                  <p>Seats: <?php echo implode(", ", $seats); ?></p> 
-              </div>
-              <!-- <div class="button-container">
-                  <button class="blue_button">View Ticket</button>
-                  <button class="blue_button">View Invoice</button>
-              </div> -->
-          </div>
-        <?php } ?>
-      </section>
-    </div>
-    <footer>
-        <div class="footerlink">
-            <a href="#">FAQ</a>
-            <a href="#">About</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Career Opportunities</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Contact Us</a>
+      ?>
+        <div class="movie-item">
+            <img src="<?php echo htmlspecialchars($movie['movie_picture']); ?>" alt="<?php echo htmlspecialchars($movie['movie_title']) . ' Poster'; ?>">
+            <div class="movie-details">
+                <h3><?php echo htmlspecialchars($movie['movie_title']); ?></h3>
+                <p>Time Slot: <?php echo htmlspecialchars($movie['timing']); ?></p>
+                <p>Seats: <?php echo implode(", ", $seats); ?></p> 
+            </div>
         </div>
-        <p>&copy; Copyright 2024 Organisation. All rights reserved. Co. Reg. No: 194700158G</p>
-    </footer>
+      <?php } ?>
+    </section>
+  </div>
+  
+  <footer>
+    <div class="footerlink">
+        <a href="#">FAQ</a>
+        <a href="#">About</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Career Opportunities</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <p>&copy; Copyright 2024 Organisation. All rights reserved. Co. Reg. No: 194700158G</p>
+  </footer>
 </body>
 </html>

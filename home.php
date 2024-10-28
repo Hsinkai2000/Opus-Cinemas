@@ -20,6 +20,8 @@ session_start();
 
     <link rel="stylesheet" href="styles/global.css?v=1" />
     <link rel="stylesheet" href="styles/home.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>

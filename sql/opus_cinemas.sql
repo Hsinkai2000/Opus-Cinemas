@@ -355,3 +355,108 @@ VALUES
 (10, 'D8'), (10, 'D9'), (10, 'D10'),
 (11, 'E11'), (11, 'E12'),
 (12, 'F2'), (12, 'F3'), (12, 'F4');
+
+
+-- Add a new cinema
+INSERT INTO cinemas (name, description, picture)
+VALUES ('The Majestic Screens', 'Experience grandeur like never before at The Majestic Screens. With massive curved screens and unparalleled sound technology, this cinema is designed to provide you with an immersive experience like no other. Recline in plush seats, savor gourmet snacks, and witness movies come to life with every scene.', 'assets/majestic_screens.png');
+
+-- Add new entries to cinemas_movies to make movies available in more cinemas
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 1);
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 2);
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 3);
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 4);
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 5);
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 6);
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 7);
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 8);
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 9);
+INSERT INTO cinemas_movies (cinema_id, movie_id) VALUES (4, 10);
+
+-- Add more movie timings for the existing and new cinema
+SET @today = CURDATE();
+
+INSERT INTO movie_timings (cinema_id, movie_id, timing) VALUES 
+-- Cinema 4 (The Majestic Screens)
+(4, 1, DATE_ADD(@today, INTERVAL 10 HOUR)),
+(4, 1, DATE_ADD(@today, INTERVAL 13 HOUR)),
+(4, 1, DATE_ADD(@today, INTERVAL 16 HOUR)),
+(4, 2, DATE_ADD(@today, INTERVAL 12 HOUR)),
+(4, 2, DATE_ADD(@today, INTERVAL 15 HOUR)),
+(4, 2, DATE_ADD(@today, INTERVAL 18 HOUR)),
+(4, 3, DATE_ADD(@today, INTERVAL 11 HOUR)),
+(4, 3, DATE_ADD(@today, INTERVAL 14 HOUR)),
+(4, 3, DATE_ADD(@today, INTERVAL 17 HOUR)),
+(4, 4, DATE_ADD(@today, INTERVAL 10 HOUR)),
+(4, 4, DATE_ADD(@today, INTERVAL 13 HOUR)),
+(4, 4, DATE_ADD(@today, INTERVAL 16 HOUR)),
+(4, 5, DATE_ADD(@today, INTERVAL 12 HOUR)),
+(4, 5, DATE_ADD(@today, INTERVAL 15 HOUR)),
+(4, 5, DATE_ADD(@today, INTERVAL 18 HOUR)),
+(4, 6, DATE_ADD(@today, INTERVAL 11 HOUR)),
+(4, 6, DATE_ADD(@today, INTERVAL 14 HOUR)),
+(4, 6, DATE_ADD(@today, INTERVAL 17 HOUR)),
+(4, 7, DATE_ADD(@today, INTERVAL 10 HOUR)),
+(4, 7, DATE_ADD(@today, INTERVAL 13 HOUR)),
+(4, 7, DATE_ADD(@today, INTERVAL 16 HOUR)),
+(4, 8, DATE_ADD(@today, INTERVAL 12 HOUR)),
+(4, 8, DATE_ADD(@today, INTERVAL 15 HOUR)),
+(4, 8, DATE_ADD(@today, INTERVAL 18 HOUR)),
+(4, 9, DATE_ADD(@today, INTERVAL 11 HOUR)),
+(4, 9, DATE_ADD(@today, INTERVAL 14 HOUR)),
+(4, 9, DATE_ADD(@today, INTERVAL 17 HOUR)),
+(4, 10, DATE_ADD(@today, INTERVAL 12 HOUR)),
+(4, 10, DATE_ADD(@today, INTERVAL 15 HOUR)),
+(4, 10, DATE_ADD(@today, INTERVAL 18 HOUR)),
+
+-- Adding additional timings to existing cinemas for more availability
+-- Cinema 1
+(1, 4, DATE_ADD(@today, INTERVAL 10 HOUR)),
+(1, 4, DATE_ADD(@today, INTERVAL 13 HOUR)),
+(1, 4, DATE_ADD(@today, INTERVAL 16 HOUR)),
+(1, 5, DATE_ADD(@today, INTERVAL 11 HOUR)),
+(1, 5, DATE_ADD(@today, INTERVAL 14 HOUR)),
+(1, 5, DATE_ADD(@today, INTERVAL 17 HOUR)),
+(1, 6, DATE_ADD(@today, INTERVAL 10 HOUR)),
+(1, 6, DATE_ADD(@today, INTERVAL 13 HOUR)),
+(1, 6, DATE_ADD(@today, INTERVAL 16 HOUR)),
+(1, 7, DATE_ADD(@today, INTERVAL 11 HOUR)),
+(1, 7, DATE_ADD(@today, INTERVAL 14 HOUR)),
+(1, 7, DATE_ADD(@today, INTERVAL 17 HOUR)),
+(1, 8, DATE_ADD(@today, INTERVAL 12 HOUR)),
+(1, 8, DATE_ADD(@today, INTERVAL 15 HOUR)),
+(1, 8, DATE_ADD(@today, INTERVAL 18 HOUR)),
+(1, 9, DATE_ADD(@today, INTERVAL 13 HOUR)),
+(1, 9, DATE_ADD(@today, INTERVAL 16 HOUR)),
+(1, 9, DATE_ADD(@today, INTERVAL 19 HOUR)),
+(1, 10, DATE_ADD(@today, INTERVAL 14 HOUR)),
+(1, 10, DATE_ADD(@today, INTERVAL 17 HOUR)),
+(1, 10, DATE_ADD(@today, INTERVAL 20 HOUR)),
+
+-- Cinema 2
+(2, 6, DATE_ADD(@today, INTERVAL 12 HOUR)),
+(2, 6, DATE_ADD(@today, INTERVAL 15 HOUR)),
+(2, 6, DATE_ADD(@today, INTERVAL 18 HOUR)),
+(2, 7, DATE_ADD(@today, INTERVAL 11 HOUR)),
+(2, 7, DATE_ADD(@today, INTERVAL 14 HOUR)),
+(2, 7, DATE_ADD(@today, INTERVAL 17 HOUR)),
+(2, 8, DATE_ADD(@today, INTERVAL 10 HOUR)),
+(2, 8, DATE_ADD(@today, INTERVAL 13 HOUR)),
+(2, 8, DATE_ADD(@today, INTERVAL 16 HOUR)),
+(2, 9, DATE_ADD(@today, INTERVAL 12 HOUR)),
+(2, 9, DATE_ADD(@today, INTERVAL 15 HOUR)),
+(2, 9, DATE_ADD(@today, INTERVAL 18 HOUR)),
+(2, 10, DATE_ADD(@today, INTERVAL 11 HOUR)),
+(2, 10, DATE_ADD(@today, INTERVAL 14 HOUR)),
+(2, 10, DATE_ADD(@today, INTERVAL 17 HOUR)),
+
+-- Cinema 3
+(3, 8, DATE_ADD(@today, INTERVAL 10 HOUR)),
+(3, 8, DATE_ADD(@today, INTERVAL 13 HOUR)),
+(3, 8, DATE_ADD(@today, INTERVAL 16 HOUR)),
+(3, 9, DATE_ADD(@today, INTERVAL 12 HOUR)),
+(3, 9, DATE_ADD(@today, INTERVAL 15 HOUR)),
+(3, 9, DATE_ADD(@today, INTERVAL 18 HOUR)),
+(3, 10, DATE_ADD(@today, INTERVAL 11 HOUR)),
+(3, 10, DATE_ADD(@today, INTERVAL 14 HOUR)),
+(3, 10, DATE_ADD(@today, INTERVAL 17 HOUR));
