@@ -120,8 +120,19 @@ select {
 }
 
 
-@media (max-width: 964px) {
-    td{
-        margin :100px;
+@media (max-width: 644px) {
+    .wrapper{
+        flex-direction: column;
+    }
+    
+    .movie-image{
+        width: 60% !important;
+        align-self: center;
+    }
+
+    .booking-details{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
     }
 }
