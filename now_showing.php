@@ -26,21 +26,21 @@ session_start();
         <![endif]-->
 
     <header>
-        <h3 class="opus-name">Opus Cinemas</h3>
+        <h3>Opus Cinemas</h3>
         <div>
             <ul class="nav">
-                <li class="navlink"><a href="home.php">Home</a></li>
                 <li class="navlink">
-                    <a href="cinemas.php">Cinemas</a>
+                    <a href="home.php">Home</a>
                 </li>
-                <li class="navlink"><a class="active" href="#">Now Showing</a></li>
+                <li class="navlink"><a href="cinemas.php">Cinemas</a></li>
+                <li class="navlink"><a class="active" href="now_showing.php">Now Showing</a></li>
             </ul>
         </div>
         <?php
         if (!isset($_SESSION['user_id'])) { ?>
-            <a class="navlink login" href="login.php">Login</a>
+        <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-            <a class="navlink login" href="account.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+        <a class="navlink login" href="account.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 
@@ -59,10 +59,10 @@ session_start();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                        <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
-                            <img src="<?php echo $row["picture"]; ?>" alt="" />
-                            <span><?php echo $row["title"]; ?></span>
-                        </div>
+                <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
+                    <img class='card-image' src="<?php echo $row["picture"]; ?>" alt="" />
+                    <span><?php echo $row["title"]; ?></span>
+                </div>
 
                 <?php
                     }

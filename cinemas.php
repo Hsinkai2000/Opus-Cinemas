@@ -23,13 +23,13 @@ session_start();
 
 <body>
     <header>
-        <h3 class="opus-name">Opus Cinemas</h3>
+        <h3>Opus Cinemas</h3>
         <div>
             <ul class="nav">
-                <li class="navlink"><a href="home.php">Home</a></li>
                 <li class="navlink">
-                    <a class="active" href="cinemas.php">Cinemas</a>
+                    <a href="home.php">Home</a>
                 </li>
+                <li class="navlink"><a class="active" href="cinemas.php">Cinemas</a></li>
                 <li class="navlink"><a href="now_showing.php">Now Showing</a></li>
             </ul>
         </div>
@@ -42,8 +42,7 @@ session_start();
     </header>
 
     <div class="wrapper">
-        <table>
-
+        <div class="cinemas">
             <?php
             $sql = "SELECT * FROM cinemas";
             $result = $conn->query($sql);
@@ -51,51 +50,21 @@ session_start();
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
-                    <tr>
-                        <th rowspan="3">
-                            <!-- defualt value is 2, i changed to 3 for debuging to fit in the movies -->
-                            <img src="<?php echo $row["picture"]; ?>" alt="" />
-                        </th>
-                        <td>
+                    <div class="cinema-card">
+                        <img class="cinema-picture" src="<?php echo $row["picture"]; ?>" alt="" />
+
+                        <div class="cinema-details">
                             <h3><?php echo $row["name"]; ?></h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <p>
                                 <?php echo $row["description"]; ?>
                             </p>
-                        </td>
-                    </tr>
-
-                    <!-- For this part, i put in the movies available at a cinema for debugging purposes-->
-                    <tr>
-                        <td>
-                            <p>
-
-                                <?php
-                                $sql_movies = "SELECT m.title FROM cinemas_movies cm JOIN movies m ON cm.movie_id = m.id WHERE cm.cinema_id = " . $row["id"];
-                                $result_movies = $conn->query($sql_movies);
-
-                                if ($result_movies && $result_movies->num_rows > 0) {
-                                    echo "Movies Showing: <br>";
-                                    while ($row_movies = $result_movies->fetch_assoc()) {
-                                        echo $row_movies["title"] . "<br>"; // Add line break for better readability
-                                    }
-                                } else {
-                                    echo "No movies found."; // Message if no movies are found
-                                }
-                                ?>
-                            </p>
-                        </td>
-                    </tr>
-
-
+                        </div>
+                    </div>
             <?php
                 }
             }
             ?>
-        </table>
+        </div>
     </div>
 
     <footer>

@@ -80,21 +80,28 @@ $genre_stmt->close();
             </div>
             <div class="movie-cast">
                 <hr>
-                <h4>Director</h4>
-                <span>
-                    <?php echo $movie['director'] ?>
-                </span>
+                <div class="cast-details">
+                    <h4>Director</h4>
+                    <span>
+                        <?php echo $movie['director'] ?>
+                    </span>
+                </div>
                 <hr>
-                <h4>Writers</h4>
-                <span>
-                    <?php echo $movie['writers'] ?>
-                </span>
+
+                <div class="cast-details">
+                    <h4>Writers</h4>
+                    <span>
+                        <?php echo $movie['writers'] ?>
+                    </span>
+                </div>
 
                 <hr>
-                <h4>Actors</h4>
-                <span>
-                    <?php echo $movie['actors'] ?>
-                </span>
+                <div class="cast-details">
+                    <h4>Actors</h4>
+                    <span>
+                        <?php echo $movie['actors'] ?>
+                    </span>
+                </div>
             </div>
         </div>
 
@@ -116,7 +123,7 @@ $genre_stmt->close();
                     while ($row = $result->fetch_assoc()) {
                 ?>
                         <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
-                            <img src="<?php echo $row["picture"]; ?>" alt="" />
+                            <img class='card-image' src="<?php echo $row["picture"]; ?>" alt="" />
                             <span><?php echo $row["title"]; ?></span>
                         </div>
 

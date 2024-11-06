@@ -52,9 +52,9 @@ $movie_location_stmt->close();
         </div>
         <?php
         if (!isset($_SESSION['user_id'])) { ?>
-        <a class="navlink login" href="login.php">Login</a>
+            <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-        <a class="navlink login" href="account.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+            <a class="navlink login" href="account.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 
@@ -69,7 +69,7 @@ $movie_location_stmt->close();
                 <select name="cinema" id="selectCinema" onchange="fetchTiming()">
                     <?php foreach ($locationList as $location) {
                     ?>
-                    <option value="<?php echo $location['id'] ?>"><?php echo $location['name'] ?></option>
+                        <option value="<?php echo $location['id'] ?>"><?php echo $location['name'] ?></option>
                     <?php } ?>
                 </select>
 
@@ -87,10 +87,10 @@ $movie_location_stmt->close();
                         <tr class="row first">
                             <th></th>
                             <?php for ($i = 1; $i <= 12; $i++): ?>
-                            <?php if ($i == 6): ?>
-                            <th colspan="2"></th>
-                            <?php endif; ?>
-                            <th><?= $i ?></th>
+                                <?php if ($i == 6): ?>
+                                    <th colspan="2"></th>
+                                <?php endif; ?>
+                                <th><?= $i ?></th>
                             <?php endfor; ?>
                         </tr>
                     </table>
@@ -160,12 +160,14 @@ $movie_location_stmt->close();
                     <tr>
                         <td></td>
                         <td colspan="2">
-                          <?php
-                          if (isset($_SESSION['user_id'])) { ?>
-                            <button class="blue_button" type="button" onclick="proceedToPayment()">Proceed to Payment</button>
-                          <?php } else { ?>
-                            <button class="blue_button" type="button"onclick="window.location.href='login.php'">Login/Signup to Proceed</button>
-                          <?php } ?>
+                            <?php
+                            if (isset($_SESSION['user_id'])) { ?>
+                                <button class="blue_button" type="button" onclick="proceedToPayment()">Proceed to
+                                    Payment</button>
+                            <?php } else { ?>
+                                <button class="blue_button" type="button"
+                                    onclick="window.location.href='login.php'">Login/Signup to Proceed</button>
+                            <?php } ?>
                         </td>
                     </tr>
                 </table>
@@ -193,7 +195,7 @@ $movie_location_stmt->close();
     </footer>
     <script src="scripts/ticket_booking.js" async defer></script>
     <script>
-    window.movieId = <?php echo $movie_id; ?>;
+        window.movieId = <?php echo $movie_id; ?>;
     </script>
 </body>
 

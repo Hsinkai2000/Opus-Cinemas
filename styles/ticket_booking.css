@@ -118,3 +118,10 @@ select {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+
+@media (max-width: 1000px) {
+    td{
+        margin :100px;
+    }
+}
