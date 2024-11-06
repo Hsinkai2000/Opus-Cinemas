@@ -52,7 +52,7 @@ hr {
 }
 
 .card:hover {
-    transform: scale(1.08); /* Scale up the card to 1.3x on hover */
+    transform: scale(1.08);
 }
 
 .card-image {
@@ -60,7 +60,7 @@ hr {
     width: 80%;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 964px) {
     .card {
         width: 25%;
     }
@@ -89,7 +89,7 @@ a:hover {
 
 .movie-meta {
     width: 50%;
-    max-width: 1000px;
+    max-width: 964px;
     height: 100%;
 }
 
@@ -123,7 +123,7 @@ a:hover {
     flex-direction: row;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 644px) {
     .movie_details {
         flex-direction: column;
         width: 80%;
@@ -161,5 +161,8 @@ a:hover {
 
     hr {
         width: 0;
+    }
+    .card {
+        width: 50%;
     }
 }

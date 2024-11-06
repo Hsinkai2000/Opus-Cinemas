@@ -120,7 +120,7 @@ select {
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 964px) {
     td{
         margin :100px;
     }

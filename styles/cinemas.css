@@ -22,13 +22,13 @@
     justify-self: end;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 964px) {
     .wrapper {
         width: 80% !important;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 644px) {
     .cinema-card {
         flex-direction: column;
     }

@@ -2,34 +2,34 @@
 html,
 body {
     background-color: #282430;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 0;
     color: #ded7d7;
-    font-family: 'Chivo', sans-serif;  /* Set Chivo as the default font */
+    font-family: "Chivo", sans-serif; /* Set Chivo as the default font */
 }
 
 /* Nav styles */
 .wrapper {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 header {
-  margin: 30px auto;
-  padding: 0px 30px 0px 30px;
-  width: 90%;
-  height: 60px;
-  border-radius: 8px;
-  background-color: #3d3c52;
-  color: #ded7d7;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Chivo', sans-serif;  /* Apply Chivo to header text */
+    margin: 30px auto;
+    padding: 0px 30px 0px 30px;
+    width: 90%;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #3d3c52;
+    color: #ded7d7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Chivo", sans-serif; /* Apply Chivo to header text */
 }
 
 header .opus-name {
@@ -53,7 +53,7 @@ header a,
 footer a {
     color: #ded7d7;
     text-decoration: none;
-    font-family: 'Chivo', sans-serif;  /* Apply Chivo to nav links */
+    font-family: "Chivo", sans-serif; /* Apply Chivo to nav links */
 }
 
 header a.active {
@@ -90,7 +90,7 @@ footer p {
     padding: 0px 30px 0px 30px;
     display: flex;
     justify-content: space-between;
-    font-family: 'Chivo', sans-serif;  /* Apply Chivo to footer links */
+    font-family: "Chivo", sans-serif; /* Apply Chivo to footer links */
 }
 
 .blue_button,
@@ -102,7 +102,7 @@ footer p {
     color: white;
     border-radius: 10px;
     cursor: pointer;
-    font-family: 'Chivo', sans-serif;  /* Apply Chivo to buttons */
+    font-family: "Chivo", sans-serif; /* Apply Chivo to buttons */
 }
 
 .transparent_button {
