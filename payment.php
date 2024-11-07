@@ -157,43 +157,46 @@ $serializedSeats = serialize($seatsArray);
 
           <div class="payment-details">
         
-          <form action="bookings.php" method="post">
+          <form action="bookings.php" method="post" onsubmit="return validateForm()">
             <label for="email">Name on Card:</label>
-            <input type="text" name="name-on-card" placeholder="Enter your name" required />
+            <input type="text" name="name-on-card" placeholder="Enter your name" required  />
+
             <label for="card-number">Card Number</label>
-            <input type="tel" name="card-number" inputmode="numeric" pattern="[0-9]*" maxlength="16" placeholder="Enter card number" required>
+            <input type="tel" name="card-number" inputmode="numeric"  maxlength="16" placeholder="Enter card number" required>
 
             <div class="card-inputs">
               <div class="input-group">
                 <label for="expiry-date">Expiry Date</label>
-                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM / YY" maxlength="7">
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM / YY" maxlength="5"  required>
               </div>
               <div class="input-group">
                 <label for="security-code">Security Code</label>
-                <input type="text" id="security-code" name="security-code" placeholder="CVV" maxlength="4">
+                <input type="text" id="security-code" name="security-code" placeholder="CVV" maxlength="3"  required>
               </div>
             </div>
 
-            <h4 class="personal-details" style="text-decoration: underline;">Personal Details</h4>
-
             <label for="name">Name</label>
             <input type="text" placeholder="Your Name" name="name" required />
-            <label for="name">Email</label>
-            <input type="email" name="email" placeholder="Enter Email" required />
-            <input type="hidden" name="movie_timing_id" value="<?php echo $movie_timing_id;?>">
-            <input type="hidden" name="price" value="<?php echo ($seatsCount * 9 * 1.07);?>">
-            <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'];?>">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="Enter Email" required  />
+
+            <!-- Hidden input fields -->
+            <input type="hidden" name="movie_timing_id" value="<?php echo $movie_timing_id; ?>">
+            <input type="hidden" name="price" value="<?php echo ($seatsCount * 9 * 1.07); ?>">
+            <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id']; ?>">
             <input type="hidden" name="seats" value="<?php echo htmlspecialchars($serializedSeats); ?>">
-            <input type="hidden" name="timing" value="<?php echo $timing;?>">
-            <input type="hidden" name="title" value="<?php echo $title;?>">
-            <input type="hidden" name="cinema" value="<?php echo $cinema;?>">
-
-
+            <input type="hidden" name="timing" value="<?php echo $timing; ?>">
+            <input type="hidden" name="title" value="<?php echo $title; ?>">
+            <input type="hidden" name="cinema" value="<?php echo $cinema; ?>">
 
             <div class="actions">
               <button type="submit" name="pay" id="payButton" class="blue_button">Pay</button>
             </div>
           </form>
+
+          
+
           </div>
       </div>
     </div>
@@ -214,7 +217,60 @@ $serializedSeats = serialize($seatsArray);
 
     <script src="scripts/ticket_booking.js" async defer></script>
     <script>
+      function validateForm() {
+        // Get form fields
+        const nameOnCard = document.querySelector('input[name="name-on-card"]');
+        const cardNumber = document.querySelector('input[name="card-number"]');
+        const expiryDate = document.querySelector('input[name="expiry-date"]');
+        const securityCode = document.querySelector('input[name="security-code"]');
+        const name = document.querySelector('input[name="name"]');
+        const email = document.querySelector('input[name="email"]');
 
+        // Validate Name on Card: Should not contain numbers
+        const namePattern = /^[a-zA-Z\s]+$/;
+        if (!namePattern.test(nameOnCard.value)) {
+          alert('Name on card should not contain numbers or special characters.');
+          nameOnCard.focus();
+          return false;
+        }
+
+        if (!namePattern.test(name.value)) {
+          alert('Name on card not contain numbers or special characters.');
+          name.focus();
+          return false;
+        }
+
+        // Validate Card Number: Should be exactly 16 digits
+        if (!/^\d{16}$/.test(cardNumber.value)) {
+          alert('Card number should be exactly 16 digits and contain numbers only');
+          cardNumber.focus();
+          return false;
+        }
+
+        // Validate Expiry Date: Should be in MM/YY format
+        if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate.value)) {
+          alert('Expiry date should be in the format MM/YY.');
+          expiryDate.focus();
+          return false;
+        }
+
+        // Validate Security Code: Should be exactly 3 digits
+        if (!/^\d{3}$/.test(securityCode.value)) {
+          alert('Security code (CVV) should be exactly 3 digits and contain numbers only.');
+          securityCode.focus();
+          return false;
+        }
+
+        // Validate Email: Should follow xxx@yyy.com format
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email.value)) {
+          alert('Please enter a valid email address in the format xxx@yyy.com.');
+          email.focus();
+          return false;
+        }
+
+        return true;
+      }
     </script>
 </body>
 

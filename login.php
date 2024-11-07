@@ -43,7 +43,7 @@
               <?php echo htmlspecialchars($_GET['error']); ?>
             </div>
           <?php endif; ?>
-          <form action="users.php" method="post">
+          <form action="users.php" method="post" onsubmit="return validateEmail()">
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="Enter Email" required />
             <label for="password">Password</label>
@@ -75,5 +75,18 @@
         </p>
     </footer>
     <script src="scripts/login.js" async defer></script>
+    <script>
+      function validateEmail() {
+        const emailField = document.querySelector('input[name="email"]');
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(emailField.value)) {
+          alert('Please enter a valid email address in the format xxx@yyy.com');
+          emailField.focus();
+          return false;
+        }
+        return true;
+      }
+    </script>
+    </script>
   </body>
 </html>
