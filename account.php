@@ -4,6 +4,7 @@ session_start();
 
 // Set default sort order
 $sortOrder = 'ASC';
+$empty = true;
 
 // Check if sort order is set in the URL
 if (isset($_GET['sort']) && ($_GET['sort'] == 'asc' || $_GET['sort'] == 'desc')) {
@@ -31,6 +32,7 @@ while ($row = $result->fetch_assoc()) {
         "movie_title" => $row["title"],
         "movie_picture" => $row["picture"],
     ];
+    $empty = false;
 }
 ?>
 
@@ -63,12 +65,17 @@ while ($row = $result->fetch_assoc()) {
 
   <div class="wrapper">
     <section>
-      <h3>Upcoming</h3>
-      <!-- Sorting buttons -->
-      <div class="sorting-buttons">
-        <a href="?sort=asc" class="sort-button">Sort by Time (ASC)</a>
-        <a href="?sort=desc" class="sort-button">Sort by Time (DESC)</a>
-      </div>
+      <?php if (!$empty) {?>
+        <h3>Upcoming</h3>
+        <!-- Sorting buttons -->
+        <div class="sorting-buttons">
+          <a href="?sort=asc" class="sort-button">Sort by Time (ASC)</a>
+          <a href="?sort=desc" class="sort-button">Sort by Time (DESC)</a>
+        </div>
+
+      <?php } else {?>
+        <h3>You have not made any bookings.</h3>
+      <?php }?>
 
       <?php foreach ($movies as $movie) {
           $stmt = $conn->prepare("SELECT seat FROM seats WHERE booking_id = ? ");
