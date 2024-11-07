@@ -58,6 +58,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Registration successful, fetch the user ID and start session
                 $_SESSION['user_id'] = $stmt->insert_id; // Get the ID of the inserted record
                 $_SESSION['email'] = $email; // Store email for later use
+
+
+                // Prepare the welcome email content
+                $subject = 'Welcome to Opus Cinemas!';
+                $message = "Dear $email,\n\n";
+                $message .= "Welcome to Opus Cinemas! We are excited to have you as part of our community.\n\n";
+                $message .= "Get ready to experience the magic of cinema, from the latest blockbusters to timeless classics. Keep an eye on our website for exclusive promotions and new movie releases.\n\n";
+                $message .= "We hope you enjoy your journey with us and look forward to seeing you at the movies!\n\n";
+                $message .= "Best Regards,\n";
+                $message .= "Opus Cinemas Team";
+
+                $headers = 'From: no-reply@opuscinemas.com' . "\r\n" .
+                          'Reply-To: support@opuscinemas.com' . "\r\n" .
+                          'X-Mailer: PHP/' . phpversion();
+
+                // Send the email
+                if (mail("irfansyakir@localhost", $subject, $message, $headers)) {
+                    // Email sent successfully
+                    echo "Registration successful. A welcome email has been sent to $email.";
+                } else {
+                    // Email failed to send
+                    echo "Registration successful, but there was an error sending the welcome email.";
+                }
+
                 
                 header("Location: home.php");
                 exit();

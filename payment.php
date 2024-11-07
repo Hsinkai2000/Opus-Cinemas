@@ -234,11 +234,7 @@ $serializedSeats = serialize($seatsArray);
           return false;
         }
 
-        if (!namePattern.test(name.value)) {
-          alert('Name on card not contain numbers or special characters.');
-          name.focus();
-          return false;
-        }
+        
 
         // Validate Card Number: Should be exactly 16 digits
         if (!/^\d{16}$/.test(cardNumber.value)) {
@@ -259,6 +255,13 @@ $serializedSeats = serialize($seatsArray);
           alert('Security code (CVV) should be exactly 3 digits and contain numbers only.');
           securityCode.focus();
           return false;
+
+        }
+
+        if (!namePattern.test(name.value)) {
+          alert('Name should not contain numbers or special characters.');
+          name.focus();
+          return false;
         }
 
         // Validate Email: Should follow xxx@yyy.com format
@@ -268,6 +271,8 @@ $serializedSeats = serialize($seatsArray);
           email.focus();
           return false;
         }
+
+        
 
         return true;
       }
