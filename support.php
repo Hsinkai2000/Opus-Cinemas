@@ -54,13 +54,17 @@
                     <?php echo htmlspecialchars($_GET['error']); ?>
                 </div>
             <?php endif; ?>
-            <form action="" method="post">
+            <form action="send_support.php" onsubmit="return validateForm()" method="post">
                 <label for="name">Name</label>
                 <input type="name" name="name" placeholder="Enter Name" required />
+
                 <label for="email">Email</label>
                 <input type="email" name="email" placeholder="Enter Email" required />
+
                 <label for="question">Question</label>
-                <textarea name="question" id="questionTF" rows="5" cols="60" placeholder="Enter Question"></textarea>
+                <textarea name="question" id="questionTF" rows="5" cols="60" placeholder="Enter Question"
+                    required></textarea>
+
                 <div class="actions">
                     <button type="submit" name="contactUs" id="contactUsButton" class="blue_button">
                         Contact Us!
@@ -83,7 +87,7 @@
             No.: 194700158G
         </p>
     </footer>
-    <script src="" async defer></script>
+    <script src="scripts/supportvalidation.js" async defer></script>
 </body>
 
 </html>
