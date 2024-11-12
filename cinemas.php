@@ -19,6 +19,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/cinemas.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -29,7 +30,7 @@ session_start();
                 <li class="navlink">
                     <a href="home.php">Home</a>
                 </li>
-                <li class="navlink"><a class="active" href="cinemas.php">Cinemas</a></li>
+                <li class="navlink"><a href="cinemas.php" class='active'>Cinemas</a></li>
                 <li class="navlink"><a href="now_showing.php">Now Showing</a></li>
             </ul>
         </div>

@@ -3,7 +3,7 @@ var errors = [];
 
 // Validate name: alphabet and spaces only
 function validateName() {
-    const name = document.getElementById("CustName").value;
+    const name = document.getElementById("name").value;
     const nameRegex = /^[A-Za-z\s]+$/;
     if (!nameRegex.test(name)) {
         errors.push("Please enter a valid name with only letters and spaces.");

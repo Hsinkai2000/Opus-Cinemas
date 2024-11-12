@@ -173,42 +173,44 @@ function regenerateSeatingTable(timing = null) {
             console.error("Error fetching seat data:", error);
         });
 }
+
 function proceedToPayment() {
-  const selectedSeatsArray = Array.from(selectedSeats);
+    const selectedSeatsArray = Array.from(selectedSeats);
 
-  if (selectedSeatsArray.length === 0) {
-      alert("Please select at least one seat before proceeding to payment.");
-      return; // Prevent further action if no seats are selected
-  }
+    if (selectedSeatsArray.length === 0) {
+        alert("Please select at least one seat before proceeding to payment.");
+        return; // Prevent further action if no seats are selected
+    }
 
-  const selectCinema = document.getElementById("selectCinema");
-  const selectedCinema = selectCinema.options[selectCinema.selectedIndex].value;
-  const selectTiming = document.getElementById("selectTiming");
-  const selectedTiming = selectTiming.options[selectTiming.selectedIndex].value;
+    const selectCinema = document.getElementById("selectCinema");
+    const selectedCinema =
+        selectCinema.options[selectCinema.selectedIndex].value;
+    const selectTiming = document.getElementById("selectTiming");
+    const selectedTiming =
+        selectTiming.options[selectTiming.selectedIndex].value;
 
-  const data = {
-      seats: selectedSeatsArray,
-      cinema_id: selectedCinema,
-      movie_id: window.movieId,
-      timing: selectedTiming,
-  };
+    const data = {
+        seats: selectedSeatsArray,
+        cinema_id: selectedCinema,
+        movie_id: window.movieId,
+        timing: selectedTiming,
+    };
 
-  fetch("store_seats.php", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-  })
-      .then((response) => {
-          if (response.ok) {
-              window.location.href = "payment.php";
-          } else {
-              console.error("Failed to store data");
-          }
-      })
-      .catch((error) => console.error("Error:", error));
+    fetch("store_seats.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+        .then((response) => {
+            if (response.ok) {
+                window.location.href = "payment.php";
+            } else {
+                console.error("Failed to store data");
+            }
+        })
+        .catch((error) => console.error("Error:", error));
 }
-
 
 fetchTiming();

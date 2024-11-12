@@ -32,9 +32,9 @@
         </div>
         <?php
         if (!isset($_SESSION['user_id'])) { ?>
-            <a class="navlink login" href="login.php">Login</a>
+        <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-            <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+        <a class="navlink login" href="logout.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 
@@ -50,21 +50,21 @@
                 the rest.
             </h2>
             <?php if (isset($_GET['error'])): ?>
-                <div class="error-message" style="color: red;">
-                    <?php echo htmlspecialchars($_GET['error']); ?>
-                </div>
+            <div class="error-message" style="color: red;">
+                <?php echo htmlspecialchars($_GET['error']); ?>
+            </div>
             <?php endif; ?>
             <form action="send_support.php" onsubmit="return validateForm()" method="post">
                 <label for="name">Name</label>
-                <input type="name" name="name" placeholder="Enter Name" required />
+                <input type="name" name="name" id="name" placeholder="Enter Name" required />
 
                 <label for="email">Email</label>
-                <input type="email" name="email" placeholder="Enter Email" required />
+                <input type="email" name="email" id="email" placeholder="Enter Email" required />
 
                 <label for="question">Question</label>
                 <textarea name="question" id="questionTF" rows="5" cols="60" placeholder="Enter Question"
                     required></textarea>
-
+                <ul id="error_messages" style="color: red;"></ul>
                 <div class="actions">
                     <button type="submit" name="contactUs" id="contactUsButton" class="blue_button">
                         Contact Us!
