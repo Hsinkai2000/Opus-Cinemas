@@ -75,11 +75,11 @@ $genre_stmt->close();
                 <p><?php echo $movie['description'] ?></p>
                 <div class="button_group">
                     <button class="transparent_button">Watch Trailer</button>
-                    <?php if($movie['isUpcoming'] == 0) {?>
-                      <button class="blue_button" onclick="bookNowClicked(<?php echo $movie_id ?>)">Book Now</button>
-                    <?php } else {?>
-                      <button class="blue_button">Coming Soon</button>
-                    <?php }?>
+                    <?php if ($movie['isUpcoming'] == 0) { ?>
+                        <button class="blue_button" onclick="bookNowClicked(<?php echo $movie_id ?>)">Book Now</button>
+                    <?php } else { ?>
+                        <button class="blue_button">Coming Soon</button>
+                    <?php } ?>
                 </div>
             </div>
             <div class="movie-cast">
@@ -126,7 +126,7 @@ $genre_stmt->close();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                        <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
+                        <div class="card" onclick=<?php echo "movieclicked(" . $row['id'] . ")" ?>>
                             <img class='card-image' src="<?php echo $row["picture"]; ?>" alt="" />
                             <span><?php echo $row["title"]; ?></span>
                         </div>

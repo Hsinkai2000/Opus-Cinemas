@@ -70,7 +70,7 @@ session_start();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                        <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
+                        <div class="card" onclick=<?php echo "movieclicked(" . $row['id'] . ")" ?>>
                             <img class="card-image" src="<?php echo $row["picture"]; ?>" alt="" />
                             <span><?php echo $row["title"]; ?></span>
                         </div>
@@ -98,7 +98,7 @@ session_start();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                        <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
+                        <div class="card" onclick=<?php echo "movieclicked(" . $row['id'] . ")" ?>>
                             <img class='card-image' src="<?php echo $row["picture"]; ?>" alt="" />
                             <span><?php echo $row["title"]; ?></span>
                         </div>

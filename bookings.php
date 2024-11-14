@@ -1,5 +1,4 @@
 <?php
-// Assuming you have a database connection file named database_connection.php
 include 'database_connection.php';
 
 session_start();
@@ -50,8 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message .= "Opus Cinemas";
 
         $headers = 'From: no-reply@opuscinemas.com' . "\r\n" .
-                   'Reply-To: support@opuscinemas.com' . "\r\n" .
-                   'X-Mailer: PHP/' . phpversion();
+            'Reply-To: support@opuscinemas.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
 
         // Send the email
         if (mail("irfansyakir@localhost", $subject, $message, $headers)) {
@@ -67,4 +66,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $stmt->error;
     }
 }
-?>

@@ -21,9 +21,6 @@ session_start();
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
 
     <header>
         <h3>Opus Cinemas</h3>
@@ -38,9 +35,9 @@ session_start();
         </div>
         <?php
         if (!isset($_SESSION['user_id'])) { ?>
-        <a class="navlink login" href="login.php">Login</a>
+            <a class="navlink login" href="login.php">Login</a>
         <?php } else { ?>
-        <a class="navlink login" href="account.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
+            <a class="navlink login" href="account.php"><?php echo htmlspecialchars($_SESSION['email']); ?></a>
         <?php } ?>
     </header>
 
@@ -59,10 +56,10 @@ session_start();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                 ?>
-                <div class="card" onclick=<?php echo "testFunction(" . $row['id'] . ")" ?>>
-                    <img class='card-image' src="<?php echo $row["picture"]; ?>" alt="" />
-                    <span><?php echo $row["title"]; ?></span>
-                </div>
+                        <div class="card" onclick=<?php echo "movieclicked(" . $row['id'] . ")" ?>>
+                            <img class='card-image' src="<?php echo $row["picture"]; ?>" alt="" />
+                            <span><?php echo $row["title"]; ?></span>
+                        </div>
 
                 <?php
                     }
